@@ -1,0 +1,239 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Anntel red brand */
+  --background: oklch(0.99 0.005 20);
+  --foreground: oklch(0.18 0.02 20);
+
+  --surface: oklch(0.985 0.008 20);
+  --surface-elevated: oklch(1 0 0);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 20);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 20);
+
+  --primary: oklch(0.52 0.22 25);        /* deep crimson */
+  --primary-glow: oklch(0.65 0.25 28);   /* glossy red highlight */
+  --primary-foreground: oklch(0.99 0.005 20);
+
+  --secondary: oklch(0.96 0.015 20);
+  --secondary-foreground: oklch(0.2 0.03 25);
+
+  --muted: oklch(0.955 0.01 20);
+  --muted-foreground: oklch(0.45 0.03 25);
+
+  --accent: oklch(0.95 0.04 25);
+  --accent-foreground: oklch(0.3 0.18 25);
+
+  --destructive: oklch(0.55 0.24 27);
+  --destructive-foreground: oklch(0.99 0.005 20);
+
+  --border: oklch(0.92 0.01 20);
+  --input: oklch(0.92 0.01 20);
+  --ring: oklch(0.52 0.22 25);
+
+  /* Brand gradients & shadows */
+  --gradient-brand: radial-gradient(circle at 30% 25%, oklch(0.75 0.2 28) 0%, oklch(0.52 0.22 25) 45%, oklch(0.28 0.13 25) 100%);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 70% 20%, oklch(0.6 0.24 25 / 0.35), transparent 60%),
+                   radial-gradient(ellipse 60% 50% at 10% 80%, oklch(0.7 0.2 30 / 0.18), transparent 60%),
+                   linear-gradient(180deg, oklch(0.99 0.005 20), oklch(0.97 0.012 20));
+  --gradient-dark: linear-gradient(180deg, oklch(0.18 0.04 25) 0%, oklch(0.1 0.03 25) 100%);
+  --gradient-text: linear-gradient(135deg, oklch(0.52 0.22 25), oklch(0.65 0.25 28));
+
+  --shadow-glow: 0 20px 60px -20px oklch(0.52 0.22 25 / 0.45);
+  --shadow-orb: 0 30px 80px -20px oklch(0.4 0.22 25 / 0.55), inset -8px -12px 24px oklch(0.2 0.15 25 / 0.6), inset 8px 12px 24px oklch(0.85 0.18 28 / 0.6);
+  --shadow-card: 0 2px 8px -2px oklch(0.2 0.05 25 / 0.06), 0 12px 32px -12px oklch(0.2 0.05 25 / 0.1);
+  --shadow-card-hover: 0 8px 20px -4px oklch(0.52 0.22 25 / 0.18), 0 24px 48px -16px oklch(0.2 0.05 25 / 0.18);
+
+  --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark {
+  --background: oklch(0.13 0.025 25);
+  --foreground: oklch(0.97 0.005 20);
+  --surface: oklch(0.16 0.03 25);
+  --surface-elevated: oklch(0.2 0.035 25);
+  --card: oklch(0.18 0.035 25);
+  --card-foreground: oklch(0.97 0.005 20);
+  --popover: oklch(0.18 0.035 25);
+  --popover-foreground: oklch(0.97 0.005 20);
+  --primary: oklch(0.65 0.25 28);
+  --primary-glow: oklch(0.75 0.22 28);
+  --primary-foreground: oklch(0.13 0.025 25);
+  --secondary: oklch(0.22 0.04 25);
+  --secondary-foreground: oklch(0.97 0.005 20);
+  --muted: oklch(0.22 0.03 25);
+  --muted-foreground: oklch(0.7 0.02 25);
+  --accent: oklch(0.25 0.08 25);
+  --accent-foreground: oklch(0.97 0.005 20);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.65 0.25 28);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { letter-spacing: -0.02em; }
+}
+
+@layer utilities {
+  .bg-hero { background: var(--gradient-hero); }
+  .bg-brand { background: var(--gradient-brand); }
+  .bg-dark { background: var(--gradient-dark); }
+  /* Twilio-style deep navy palette */
+  .bg-navy { background: linear-gradient(180deg, #050b1f 0%, #0a1730 50%, #0d1f3f 100%); }
+  .bg-navy-deep { background: radial-gradient(ellipse 80% 60% at 50% 0%, #122a55 0%, #050b1f 60%); }
+  .navy-card { background: linear-gradient(180deg, #0f1f3d 0%, #0a1730 100%); border: 1px solid rgba(255,255,255,0.08); }
+  .text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-navy {
+    background: linear-gradient(135deg, #ffffff 0%, #93c5fd 60%, #ef4444 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-orb { box-shadow: var(--shadow-orb); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-card-hover { box-shadow: var(--shadow-card-hover); }
+  .transition-smooth { transition: all 0.4s var(--transition-smooth); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float, .animate-pulse-glow, .animate-marquee, .shine::after,
+    .conic-ring::before, .beam-dash, .bubble-in { animation: none !important; }
+    .hover-lift:hover { transform: none; }
+    .tilt-3d:hover { transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* 3D glossy orb */
+  .orb-3d {
+    position: relative;
+    border-radius: 9999px;
+    background:
+      radial-gradient(circle at 32% 28%, oklch(0.95 0.05 28 / 0.9) 0%, oklch(0.7 0.22 28 / 0.4) 18%, transparent 35%),
+      radial-gradient(circle at 70% 75%, oklch(0.2 0.15 25) 0%, oklch(0.35 0.2 25) 30%, transparent 60%),
+      radial-gradient(circle at 50% 50%, oklch(0.55 0.24 25), oklch(0.3 0.18 25) 75%);
+    box-shadow:
+      0 40px 80px -20px oklch(0.3 0.2 25 / 0.6),
+      inset -10px -20px 40px oklch(0.15 0.1 25 / 0.7),
+      inset 10px 15px 30px oklch(0.9 0.2 28 / 0.5);
+  }
+  .orb-3d::after {
+    content: "";
+    position: absolute;
+    inset: 8% 30% auto 12%;
+    height: 30%;
+    border-radius: 9999px;
+    background: radial-gradient(ellipse, oklch(1 0 0 / 0.7), transparent 70%);
+    filter: blur(2px);
+    pointer-events: none;
+  }
+
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(2deg); }
+  }
+  .animate-float { animation: float-y 7s ease-in-out infinite; }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.05); }
+  }
+  .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee { animation: marquee 30s linear infinite; }
+
+  .hover-lift { transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth); }
+  .hover-lift:hover { transform: translateY(-6px); box-shadow: var(--shadow-card-hover); }
+
+  /* tilt-on-hover 3D card */
+  .tilt-3d { transform-style: preserve-3d; transition: transform 0.6s var(--transition-smooth); }
+  .tilt-3d:hover { transform: perspective(1200px) rotateY(-6deg) rotateX(4deg) translateY(-6px); }
+
+  /* conic rotating glow ring for video frame */
+  @keyframes conic-spin { to { transform: rotate(360deg); } }
+  .conic-ring { position: relative; }
+  .conic-ring::before {
+    content: ""; position: absolute; inset: -2px; border-radius: inherit; padding: 2px;
+    background: conic-gradient(from 0deg, transparent 0%, oklch(0.65 0.25 28) 25%, transparent 50%, oklch(0.52 0.22 25) 75%, transparent 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    animation: conic-spin 6s linear infinite; pointer-events: none; z-index: 1;
+  }
+
+  /* shine sweep */
+  @keyframes shine-sweep { 0% { transform: translateX(-120%) skewX(-12deg); } 100% { transform: translateX(220%) skewX(-12deg); } }
+  .shine { position: relative; overflow: hidden; }
+  .shine::after {
+    content: ""; position: absolute; top: 0; left: 0; height: 100%; width: 60%;
+    background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.35), transparent);
+    animation: shine-sweep 3.5s ease-in-out infinite; pointer-events: none;
+  }
+
+  /* animated dashed beam (SVG) */
+  @keyframes dash-flow { to { stroke-dashoffset: -200; } }
+  .beam-dash { stroke-dasharray: 6 10; animation: dash-flow 3s linear infinite; }
+
+  /* chat bubble pop-in */
+  @keyframes bubble-in {
+    0% { opacity: 0; transform: translateY(12px) scale(0.92); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .bubble-in { animation: bubble-in 0.6s var(--transition-smooth) backwards; }
+}
