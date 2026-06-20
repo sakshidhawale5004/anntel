@@ -28,7 +28,7 @@ export function HeroOrb() {
         />
 
         <img
-          src="/homeimage.jpg"
+          src="/homepageimage.jpg"
           alt="Anntel cloud communications platform"
           className="w-full object-cover"
           style={{ maxHeight: "380px" }}

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, Clock, Shield } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
@@ -17,82 +17,147 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [sent, setSent] = useState(false);
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ background: "#050b1f" }}>
       <SiteNav />
 
-      <section className="bg-hero">
-        <div className="container mx-auto px-5 lg:px-8 py-20 lg:py-24 text-center max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary mb-5">
+      {/* HERO */}
+      <section
+        className="relative w-full overflow-hidden text-white py-20 lg:py-28"
+        style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, #122a55 0%, #050b1f 60%)" }}
+      >
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]">
+          <div className="absolute inset-0 [background-image:linear-gradient(rgba(147,197,253,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(147,197,253,0.1)_1px,transparent_1px)] [background-size:56px_56px]" />
+        </div>
+        {/* Glow orbs */}
+        <div className="absolute -top-20 left-1/3 h-[300px] w-[300px] rounded-full bg-[#ef4444]/15 blur-[100px]" />
+        <div className="absolute top-10 right-10 h-[250px] w-[250px] rounded-full bg-[#3b82f6]/15 blur-[80px]" />
+
+        <div className="relative container mx-auto px-5 lg:px-8 text-center max-w-3xl z-10">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur px-4 py-1.5 text-xs font-semibold text-white mb-6">
+            <span className="h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" />
             We'd love to hear from you
           </div>
-          <h1 className="font-display text-5xl lg:text-6xl mb-5">
-            Let's <span className="text-gradient">talk.</span>
+          <h1 className="font-display text-5xl lg:text-7xl mb-5 text-white" style={{ textShadow: "0 4px 32px rgba(0,0,0,0.5)" }}>
+            Let's <span style={{ background: "linear-gradient(135deg,#ef4444,#f87171)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>talk.</span>
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-white/65 max-w-xl mx-auto">
             Whether you're scaling OTPs, launching WhatsApp commerce or building a global voice stack — our experts are ready.
           </p>
         </div>
       </section>
 
-      <section className="container mx-auto px-5 lg:px-8 py-16 grid lg:grid-cols-3 gap-10">
-        <div className="lg:col-span-2 rounded-3xl border border-border bg-card p-8 lg:p-10 shadow-card">
+      {/* QUICK STATS BAR */}
+      <div className="border-y border-white/10" style={{ background: "rgba(10,23,48,0.8)" }}>
+        <div className="container mx-auto px-5 lg:px-8 py-4 flex flex-wrap justify-center gap-8 text-sm text-white/70">
+          <div className="flex items-center gap-2"><Clock className="h-4 w-4 text-red-400" /> Responds within 1 business day</div>
+          <div className="flex items-center gap-2"><MessageSquare className="h-4 w-4 text-blue-400" /> 24/7 support available</div>
+          <div className="flex items-center gap-2"><Shield className="h-4 w-4 text-green-400" /> Enterprise SLA options</div>
+        </div>
+      </div>
+
+      {/* MAIN FORM + SIDEBAR */}
+      <section className="container mx-auto px-5 lg:px-8 py-16 grid lg:grid-cols-3 gap-8">
+
+        {/* Contact Form */}
+        <div
+          className="lg:col-span-2 rounded-3xl p-8 lg:p-10 border border-white/10"
+          style={{ background: "linear-gradient(180deg, #0f1f3d 0%, #0a1730 100%)" }}
+        >
+          <div className="mb-8">
+            <h2 className="font-display text-2xl text-white mb-1">Send us a message</h2>
+            <p className="text-sm text-white/50">Fill in the form and our team will get back to you shortly.</p>
+          </div>
+
           {sent ? (
             <div className="text-center py-16">
-              <div className="mx-auto h-16 w-16 rounded-full bg-brand text-primary-foreground flex items-center justify-center shadow-glow mb-5">
+              <div className="mx-auto h-16 w-16 rounded-full bg-gradient-to-br from-red-600 to-red-800 text-white flex items-center justify-center shadow-[0_0_40px_rgba(239,68,68,0.4)] mb-5">
                 <Send className="h-6 w-6" />
               </div>
-              <h2 className="font-display text-3xl mb-2">Thank you!</h2>
-              <p className="text-muted-foreground">We received your message and will respond within one business day.</p>
+              <h3 className="font-display text-3xl text-white mb-2">Thank you!</h3>
+              <p className="text-white/60">We received your message and will respond within one business day.</p>
             </div>
           ) : (
-            <form
-              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-              className="grid sm:grid-cols-2 gap-5"
-            >
+            <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="grid sm:grid-cols-2 gap-5">
               <Field label="First name" name="first" required />
               <Field label="Last name" name="last" required />
               <Field label="Work email" name="email" type="email" required />
               <Field label="Company" name="company" />
               <Field label="Phone" name="phone" type="tel" />
               <div>
-                <label className="block text-sm font-medium mb-1.5">Interested in</label>
-                <select className="w-full h-11 rounded-lg border border-input bg-background px-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
-                  <option>SMS / Messaging</option>
-                  <option>WhatsApp Business API</option>
-                  <option>Voice Services</option>
-                  <option>Email</option>
-                  <option>RCS Business Messaging</option>
-                  <option>Chatbots</option>
-                  <option>Reseller program</option>
+                <label className="block text-sm font-medium mb-1.5 text-white/80">Interested in</label>
+                <select className="w-full h-11 rounded-xl border border-white/15 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/50 text-white"
+                  style={{ background: "rgba(255,255,255,0.05)" }}>
+                  <option style={{ background: "#0a1730" }}>SMS / Messaging</option>
+                  <option style={{ background: "#0a1730" }}>WhatsApp Business API</option>
+                  <option style={{ background: "#0a1730" }}>Voice Services</option>
+                  <option style={{ background: "#0a1730" }}>Email</option>
+                  <option style={{ background: "#0a1730" }}>RCS Business Messaging</option>
+                  <option style={{ background: "#0a1730" }}>Chatbots</option>
+                  <option style={{ background: "#0a1730" }}>Reseller program</option>
                 </select>
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-sm font-medium mb-1.5">How can we help?</label>
+                <label className="block text-sm font-medium mb-1.5 text-white/80">How can we help?</label>
                 <textarea
                   rows={5}
-                  className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full rounded-xl border border-white/15 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/50 text-white resize-none"
+                  style={{ background: "rgba(255,255,255,0.05)" }}
                   placeholder="Tell us about your project..."
                 />
               </div>
               <div className="sm:col-span-2 flex justify-end">
-                <Button variant="hero" size="lg" type="submit">Send message <Send className="h-4 w-4" /></Button>
+                <Button variant="hero" size="lg" type="submit">
+                  Send message <Send className="h-4 w-4" />
+                </Button>
               </div>
             </form>
           )}
         </div>
 
-        <div className="space-y-5">
-          <InfoCard icon={Mail} title="Email" text="contact@anntel.in" href="mailto:contact@anntel.in" />
+        {/* Sidebar */}
+        <div className="space-y-4">
+          <InfoCard icon={Mail} title="Email us" text="contact@anntel.in" href="mailto:contact@anntel.in" />
           <InfoCard icon={Phone} title="Sales Inquiry" text="+91 8828 22 3388" href="tel:+918828223388" />
-          <InfoCard icon={MapPin} title="Address" text="Mumbai · Delhi · Bengaluru, India" />
+          <InfoCard icon={MapPin} title="Offices" text="Mumbai · Delhi · Bengaluru" />
 
-          <div className="relative rounded-2xl bg-brand text-primary-foreground p-6 shadow-orb overflow-hidden">
-            <div className="absolute -right-8 -bottom-8 h-32 w-32 rounded-full bg-white/20 blur-2xl" />
+          {/* Enterprise CTA card */}
+          <div
+            className="relative rounded-2xl p-6 overflow-hidden border border-red-500/20"
+            style={{ background: "linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%)" }}
+          >
+            <div className="absolute -right-8 -bottom-8 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
+            <div className="absolute top-0 left-0 w-full h-full opacity-10"
+              style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.1) 1px,transparent 1px)", backgroundSize: "24px 24px" }}
+            />
             <div className="relative">
-              <div className="text-xs uppercase tracking-wider opacity-80 mb-1">Enterprise</div>
-              <div className="font-semibold mb-1">Need a custom rollout?</div>
-              <p className="text-sm opacity-90">Dedicated account manager, custom SLAs and on-call engineering.</p>
+              <div className="text-xs uppercase tracking-wider text-red-300 font-semibold mb-1">Enterprise</div>
+              <div className="font-semibold text-white mb-1">Need a custom rollout?</div>
+              <p className="text-sm text-white/75">Dedicated account manager, custom SLAs and on-call engineering.</p>
+            </div>
+          </div>
+
+          {/* Working hours */}
+          <div
+            className="rounded-2xl p-5 border border-white/10"
+            style={{ background: "linear-gradient(180deg, #0f1f3d 0%, #0a1730 100%)" }}
+          >
+            <div className="text-xs uppercase tracking-wider text-white/40 font-semibold mb-3">Working Hours</div>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between text-white/70">
+                <span>Mon – Fri</span>
+                <span className="text-white font-medium">9:00 AM – 7:00 PM IST</span>
+              </div>
+              <div className="flex justify-between text-white/70">
+                <span>Saturday</span>
+                <span className="text-white font-medium">10:00 AM – 4:00 PM IST</span>
+              </div>
+              <div className="flex justify-between text-white/70">
+                <span>Sunday</span>
+                <span className="text-red-400 font-medium">Closed</span>
+              </div>
             </div>
           </div>
         </div>
@@ -106,13 +171,14 @@ function Contact() {
 function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
   return (
     <div>
-      <label htmlFor={name} className="block text-sm font-medium mb-1.5">{label}</label>
+      <label htmlFor={name} className="block text-sm font-medium mb-1.5 text-white/80">{label}</label>
       <input
         id={name}
         name={name}
         type={type}
         required={required}
-        className="w-full h-11 rounded-lg border border-input bg-background px-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+        className="w-full h-11 rounded-xl border border-white/15 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/50 text-white placeholder:text-white/30"
+        style={{ background: "rgba(255,255,255,0.05)" }}
       />
     </div>
   );
@@ -120,13 +186,16 @@ function Field({ label, name, type = "text", required }: { label: string; name: 
 
 function InfoCard({ icon: Icon, title, text, href }: { icon: typeof Mail; title: string; text: string; href?: string }) {
   const inner = (
-    <div className="rounded-2xl border border-border bg-card p-5 shadow-card flex items-start gap-3 hover-lift">
-      <div className="h-10 w-10 rounded-xl bg-brand text-primary-foreground flex items-center justify-center shadow-glow shrink-0">
+    <div
+      className="rounded-2xl border border-white/10 p-5 flex items-start gap-3 hover-lift transition-all group"
+      style={{ background: "linear-gradient(180deg, #0f1f3d 0%, #0a1730 100%)" }}
+    >
+      <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-red-600 to-red-800 text-white flex items-center justify-center shadow-[0_0_20px_rgba(239,68,68,0.3)] shrink-0 group-hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] transition-all">
         <Icon className="h-4 w-4" />
       </div>
       <div>
-        <div className="text-xs uppercase tracking-wider text-muted-foreground">{title}</div>
-        <div className="font-medium">{text}</div>
+        <div className="text-xs uppercase tracking-wider text-white/40 font-semibold">{title}</div>
+        <div className="font-medium text-white">{text}</div>
       </div>
     </div>
   );
