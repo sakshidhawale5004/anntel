@@ -152,7 +152,7 @@ function Home() {
             </div>
             <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)] conic-ring">
               <img
-                src="/homeimage.jpg"
+                src="/showcase-person.jpg"
                 alt="Anntel multi-channel customer engagement platform"
                 className="w-full h-full object-cover"
                 style={{ minHeight: "320px", maxHeight: "440px" }}
