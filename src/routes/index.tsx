@@ -4,7 +4,6 @@ import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { HeroOrb } from "@/components/site/HeroOrb";
 import { VideoShowcase } from "@/components/site/VideoShowcase";
-import videoAsset from "@/assets/service-hero.mp4.asset.json";
 import {
   MessageSquare, Phone, Mail, Bot, Globe, Shield,
   ArrowRight, Sparkles, Zap, Layers, MessagesSquare,
@@ -38,15 +37,12 @@ function Home() {
     <div className="min-h-screen bg-background">
       <SiteNav />
 
-      {/* HERO — Video background + 3D effects */}
-      <section className="relative w-full overflow-hidden bg-dark text-white min-h-[90vh] flex flex-col justify-center">
-        <video
-          src={videoAsset.url}
-          autoPlay loop muted playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-screen"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/80 via-navy/60 to-background/95" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
+      {/* HERO — Deep navy background + 3D effects */}
+      <section className="relative w-full overflow-hidden bg-navy-deep text-white min-h-[90vh] flex flex-col justify-center">
+        <div className="absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]">
+          <div className="absolute inset-0 [background-image:linear-gradient(rgba(147,197,253,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(147,197,253,0.08)_1px,transparent_1px)] [background-size:56px_56px]" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/95" />
         
         {/* glow orbs */}
         <div className="absolute -top-32 left-1/4 h-[480px] w-[480px] rounded-full bg-[#ef4444]/20 blur-[120px] animate-pulse-glow" />

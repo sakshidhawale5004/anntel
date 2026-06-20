@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Play, Pause, Volume2, VolumeX, ArrowRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import videoAsset from "@/assets/service-hero.mp4.asset.json";
 import { prefersReducedMotion, track } from "@/lib/analytics";
 
 interface VideoHeroProps {
@@ -48,36 +47,19 @@ export function VideoHero({ eyebrow, title, subtitle, service }: VideoHeroProps)
     return () => io.disconnect();
   }, []);
 
-  const toggle = () => {
-    const v = ref.current; if (!v) return;
-    if (v.paused) {
-      v.play().then(() => setPlaying(true)).catch(() => {});
-      track("video_play", { surface: "hero", service });
-    } else {
-      v.pause(); setPlaying(false);
-      track("video_pause", { surface: "hero", service });
-    }
-  };
-  const toggleMute = () => {
-    const v = ref.current; if (!v) return;
-    v.muted = !v.muted; setMuted(v.muted);
-    track("video_mute_toggle", { surface: "hero", service, muted: v.muted });
-  };
+  const toggle = () => {};
+  const toggleMute = () => {};
 
   return (
-    <section className="relative w-full h-[70vh] min-h-[480px] max-h-[760px] overflow-hidden bg-dark">
-      {!reduced && (
-        <video
-          ref={ref}
-          src={videoAsset.url}
-          autoPlay loop muted playsInline
-          preload="metadata"
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-70"
-        />
-      )}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/10" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent" />
+    <section className="relative w-full h-[70vh] min-h-[480px] max-h-[760px] overflow-hidden bg-navy-deep text-white">
+      {/* Dynamic background pattern and gradient */}
+      <div className="absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]">
+        <div className="absolute inset-0 [background-image:linear-gradient(rgba(147,197,253,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(147,197,253,0.1)_1px,transparent_1px)] [background-size:56px_56px]" />
+      </div>
+      <div className="absolute -top-32 -left-10 h-[500px] w-[500px] rounded-full bg-[#ef4444]/20 blur-[120px]" />
+      <div className="absolute top-40 right-10 h-[400px] w-[400px] rounded-full bg-[#3b82f6]/20 blur-[120px]" />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
 
       <div className="relative h-full container mx-auto px-5 lg:px-8 flex items-center">
         <div className="max-w-2xl text-primary-foreground">
@@ -100,18 +82,6 @@ export function VideoHero({ eyebrow, title, subtitle, service }: VideoHeroProps)
         </div>
       </div>
 
-      {!reduced && (
-        <div className="absolute bottom-5 right-5 flex items-center gap-2 z-10">
-          <button onClick={toggle} aria-label={playing ? "Pause" : "Play"}
-            className="h-10 w-10 rounded-full bg-white/15 backdrop-blur border border-white/25 grid place-items-center text-primary-foreground hover:bg-white/25 hover:scale-110 transition-all">
-            {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-          </button>
-          <button onClick={toggleMute} aria-label={muted ? "Unmute" : "Mute"}
-            className="h-10 w-10 rounded-full bg-white/15 backdrop-blur border border-white/25 grid place-items-center text-primary-foreground hover:bg-white/25 hover:scale-110 transition-all">
-            {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-          </button>
-        </div>
-      )}
     </section>
   );
 }
