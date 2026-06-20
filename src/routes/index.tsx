@@ -3,10 +3,12 @@ import { Button } from "@/components/ui/button";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { HeroOrb } from "@/components/site/HeroOrb";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import {
   MessageSquare, Phone, Mail, Bot, Globe, Shield,
   ArrowRight, Sparkles, Zap, Layers, MessagesSquare,
 } from "lucide-react";
+
 
 export const Route = createFileRoute("/")(  {
   head: () => ({
@@ -21,17 +23,39 @@ export const Route = createFileRoute("/")(  {
 });
 
 const solutions = [
-  { icon: MessageSquare, title: "Messaging", desc: "Reliable SMS, 2-way conversations and international delivery at scale.", to: "/anntel-messaging" },
-  { icon: MessagesSquare, title: "WhatsApp Business", desc: "Official WhatsApp API for marketing, support and rich conversations.", to: "/whatsapp-api" },
-  { icon: Phone, title: "Voice Services", desc: "Cloud voice, IVR, click-to-call and intelligent call routing.", to: "/voice-services" },
-  { icon: Mail, title: "Email", desc: "Transactional and marketing email with inbox-first deliverability.", to: "/email-services" },
-  { icon: Bot, title: "Chatbots", desc: "AI-powered automation across WhatsApp, web and messaging channels.", to: "/chatbots" },
-  { icon: Shield, title: "OTP & Verify", desc: "Secure one-time passwords and identity verification, globally.", to: "/otp-solutions" },
+  {
+    icon: MessageSquare, title: "Messaging", desc: "Reliable SMS, 2-way conversations and international delivery at scale.", to: "/anntel-messaging",
+    img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
+  },
+  {
+    icon: MessagesSquare, title: "WhatsApp Business", desc: "Official WhatsApp API for marketing, support and rich conversations.", to: "/whatsapp-api",
+    img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80",
+  },
+  {
+    icon: Phone, title: "Voice Services", desc: "Cloud voice, IVR, click-to-call and intelligent call routing.", to: "/voice-services",
+    img: "https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=600&q=80",
+  },
+  {
+    icon: Mail, title: "Email", desc: "Transactional and marketing email with inbox-first deliverability.", to: "/email-services",
+    img: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=600&q=80",
+  },
+  {
+    icon: Bot, title: "Chatbots", desc: "AI-powered automation across WhatsApp, web and messaging channels.", to: "/chatbots",
+    img: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80",
+  },
+  {
+    icon: Shield, title: "OTP & Verify", desc: "Secure one-time passwords and identity verification, globally.", to: "/otp-solutions",
+    img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80",
+  },
 ];
+
 
 const logos = ["Acme", "Globex", "Initech", "Umbrella", "Stark", "Wayne", "Hooli", "Pied Piper"];
 
 function Home() {
+  const { ref: blocksRef, isVisible: blocksVisible } = useScrollReveal();
+  const { ref: statsRef, isVisible: statsVisible } = useScrollReveal();
+  const { ref: cxRef, isVisible: cxVisible } = useScrollReveal();
   return (
     <div className="min-h-screen bg-background">
       <SiteNav />
@@ -98,13 +122,13 @@ function Home() {
         </div>
       </section>
 
-      {/* BUILDING BLOCKS — Navy card grid */}
+      {/* BUILDING BLOCKS — with Unsplash photos + 3D cards */}
       <section
         className="text-white py-24"
         style={{ background: "linear-gradient(180deg,#050b1f 0%,#0a1730 50%,#0d1f3f 100%)" }}
       >
         <div className="container mx-auto px-5 lg:px-8">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
+          <div ref={blocksRef} className={`flex flex-wrap items-end justify-between gap-6 mb-12 ${blocksVisible ? "reveal-up" : "reveal-hidden"}`}>
             <div className="max-w-2xl">
               <h2 className="font-display text-4xl md:text-5xl mb-3 text-white">Building blocks for every conversation</h2>
               <p className="text-white/70">
@@ -117,27 +141,41 @@ function Home() {
             </Button>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {solutions.map((s) => (
+            {solutions.map((s, i) => (
               <Link
                 key={s.title}
                 to={s.to}
-                className="group rounded-2xl p-6 hover-lift tilt-3d relative overflow-hidden shadow-card hover:shadow-card-hover"
+                className={`group rounded-2xl overflow-hidden card-3d relative ${blocksVisible ? `reveal-up delay-${[100,200,300,100,200,300][i] ?? 100}` : "reveal-hidden"}`}
                 style={{ background: "linear-gradient(180deg,#0f1f3d 0%,#0a1730 100%)", border: "1px solid rgba(255,255,255,0.08)" }}
               >
-                <div className="aspect-[16/10] rounded-xl mb-5 bg-gradient-to-br from-[#0a1730] to-[#050b1f] border border-white/10 grid place-items-center relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_30%_40%,rgba(239,68,68,0.4),transparent_50%),radial-gradient(circle_at_70%_70%,rgba(59,130,246,0.35),transparent_55%)]" />
-                  <s.icon className="h-14 w-14 text-white/90 relative drop-shadow-[0_4px_12px_rgba(239,68,68,0.5)]" />
+                {/* Image thumbnail */}
+                <div className="aspect-[16/9] relative overflow-hidden">
+                  <img
+                    src={s.img}
+                    alt={s.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050b1f] via-[#050b1f]/40 to-transparent" />
+                  {/* Icon badge */}
+                  <div className="absolute top-3 right-3 h-10 w-10 rounded-xl bg-gradient-to-br from-red-600 to-red-800 text-white flex items-center justify-center shadow-[0_0_20px_rgba(239,68,68,0.4)]">
+                    <s.icon className="h-5 w-5" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-1.5 text-white">{s.title}</h3>
-                <p className="text-sm text-white/65 mb-5">{s.desc}</p>
-                <span className="inline-flex items-center gap-2 text-sm font-semibold rounded-full bg-[#3b82f6] text-white px-4 py-2 group-hover:bg-[#2563eb] transition-colors">
-                  Explore <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-                </span>
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold mb-1.5 text-white card-depth-1">{s.title}</h3>
+                  <p className="text-sm text-white/60 mb-4">{s.desc}</p>
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold rounded-full bg-white/10 border border-white/15 text-white px-4 py-1.5 group-hover:bg-[#3b82f6] group-hover:border-transparent transition-all">
+                    Explore <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* CX SPLIT — homeimage.jpg showcase */}
       <section

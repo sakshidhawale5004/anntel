@@ -236,4 +236,161 @@
     100% { opacity: 1; transform: translateY(0) scale(1); }
   }
   .bubble-in { animation: bubble-in 0.6s var(--transition-smooth) backwards; }
+
+  /* ─── SCROLL REVEAL ──────────────────────────────────────────────────── */
+  @keyframes reveal-up {
+    0%   { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes reveal-left {
+    0%   { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes reveal-right {
+    0%   { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes reveal-scale {
+    0%   { opacity: 0; transform: scale(0.88); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes count-up {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Hidden state before reveal */
+  .reveal-hidden { opacity: 0; }
+
+  /* Triggered by JS adding .reveal class */
+  .reveal-up    { animation: reveal-up    0.7s var(--transition-smooth) both; }
+  .reveal-left  { animation: reveal-left  0.7s var(--transition-smooth) both; }
+  .reveal-right { animation: reveal-right 0.7s var(--transition-smooth) both; }
+  .reveal-scale { animation: reveal-scale 0.6s var(--transition-smooth) both; }
+  .reveal-count { animation: count-up     0.8s var(--transition-smooth) both; }
+
+  /* Stagger delays */
+  .delay-0   { animation-delay: 0ms; }
+  .delay-100 { animation-delay: 100ms; }
+  .delay-150 { animation-delay: 150ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+
+  /* ─── ENHANCED 3D CARD ───────────────────────────────────────────────── */
+  /* Deep perspective card with light-edge highlight */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.5s var(--transition-smooth), box-shadow 0.5s var(--transition-smooth);
+    position: relative;
+  }
+  .card-3d::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.4s;
+    opacity: 0;
+  }
+  .card-3d:hover::before { opacity: 1; }
+  .card-3d:hover {
+    transform: perspective(1000px) rotateY(-8deg) rotateX(5deg) translateY(-8px) translateZ(20px);
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.3), -5px -5px 20px rgba(255,255,255,0.03);
+  }
+
+  /* Depth-layer child elements */
+  .card-3d .card-depth-1 { transform: translateZ(10px); }
+  .card-3d .card-depth-2 { transform: translateZ(20px); }
+  .card-3d .card-depth-3 { transform: translateZ(30px); }
+
+  /* ─── IMAGE 3D FRAME ─────────────────────────────────────────────────── */
+  .img-3d-frame {
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow:
+      0 25px 60px -10px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(255,255,255,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: transform 0.5s var(--transition-smooth), box-shadow 0.5s var(--transition-smooth);
+    transform-style: preserve-3d;
+  }
+  .img-3d-frame:hover {
+    transform: perspective(1200px) rotateY(-6deg) rotateX(3deg) translateY(-6px);
+    box-shadow:
+      30px 30px 80px -10px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(255,255,255,0.12),
+      inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+
+  /* ─── GLASS CARD ─────────────────────────────────────────────────────── */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.25rem;
+    transition: background 0.3s, border-color 0.3s, transform 0.4s var(--transition-smooth);
+  }
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-4px);
+  }
+
+  /* ─── COUNTER ROLL ───────────────────────────────────────────────────── */
+  @keyframes shimmer-bg {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+  .shimmer-text {
+    background: linear-gradient(90deg, #ef4444 0%, #f87171 25%, #ffffff 50%, #f87171 75%, #ef4444 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer-bg 3s linear infinite;
+  }
+
+  /* ─── MOTION LINES ───────────────────────────────────────────────────── */
+  @keyframes scan-line {
+    0%   { transform: translateY(-100%); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.6; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+  .scan-line {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(239,68,68,0.4), transparent);
+    animation: scan-line 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ─── PARTICLE DOTS ──────────────────────────────────────────────────── */
+  @keyframes particle-drift {
+    0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.4; }
+    33%       { transform: translateY(-20px) translateX(10px) scale(1.2); opacity: 0.7; }
+    66%       { transform: translateY(10px) translateX(-8px) scale(0.9); opacity: 0.5; }
+  }
+  .particle { animation: particle-drift 6s ease-in-out infinite; }
+  .particle:nth-child(2) { animation-delay: 1s; animation-duration: 8s; }
+  .particle:nth-child(3) { animation-delay: 2s; animation-duration: 7s; }
+  .particle:nth-child(4) { animation-delay: 3s; animation-duration: 9s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .reveal-count,
+    .card-3d:hover, .img-3d-frame:hover, .glass-card:hover,
+    .animate-float, .animate-pulse-glow, .animate-marquee, .shine::after,
+    .conic-ring::before, .beam-dash, .bubble-in,
+    .shimmer-text, .scan-line, .particle { animation: none !important; }
+    .hover-lift:hover, .tilt-3d:hover { transform: none; }
+    html { scroll-behavior: auto; }
+  }
 }
+

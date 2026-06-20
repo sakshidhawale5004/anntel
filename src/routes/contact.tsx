@@ -162,6 +162,105 @@ function Contact() {
           </div>
         </div>
       </section>
+      {/* OUR OFFICES */}
+      <section style={{ background: "linear-gradient(180deg,#050b1f 0%,#0a1730 100%)" }} className="py-20">
+        <div className="container mx-auto px-5 lg:px-8">
+
+          {/* Section header + world map */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold text-white mb-4">
+                <span className="h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" />
+                Our presence
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl text-white mb-4">Our Offices</h2>
+              <p className="text-white/60 mb-8 max-w-md">With offices across India, Anntel delivers local expertise with global-grade infrastructure to power your communications at scale.</p>
+              <div className="space-y-3">
+                {[
+                  { city: "MUMBAI", detail: "Registered Office, Maharashtra" },
+                  { city: "RAIPUR", detail: "Operations Centre, Chhattisgarh" },
+                  { city: "HARYANA", detail: "North India Hub, NCR Region" },
+                ].map((o) => (
+                  <div key={o.city} className="flex items-center gap-3 py-3 border-b border-white/10 group cursor-pointer">
+                    <span className="text-red-500 font-bold text-sm">▶</span>
+                    <div>
+                      <div className="text-sm font-bold text-white tracking-widest">{o.city}</div>
+                      <div className="text-xs text-white/50">{o.detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* World map image */}
+            <div className="img-3d-frame">
+              <img
+                src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800&q=80"
+                alt="Our global offices"
+                className="w-full h-64 lg:h-80 object-cover"
+              />
+              {/* India highlight overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0a1730]/60 via-transparent to-[#0a1730]/60" />
+              <div className="absolute bottom-4 left-4 text-xs text-white/70 font-semibold">
+                📍 India — Mumbai · Raipur · Haryana
+              </div>
+            </div>
+          </div>
+
+          {/* Office detail cards */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                city: "Mumbai",
+                state: "Maharashtra",
+                address: "Andheri East, Mumbai – 400 069",
+                phone: "+91 8828 22 3388",
+                img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+                tag: "Headquarters",
+              },
+              {
+                city: "Raipur",
+                state: "Chhattisgarh",
+                address: "Sector 24, GE Road, Raipur – 492 001",
+                phone: "+91 8828 22 3388",
+                img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
+                tag: "Operations",
+              },
+              {
+                city: "Haryana",
+                state: "NCR Region",
+                address: "Sector 44, Gurugram – 122 003",
+                phone: "+91 8828 22 3388",
+                img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80",
+                tag: "North India Hub",
+              },
+            ].map((office) => (
+              <div
+                key={office.city}
+                className="card-3d rounded-2xl overflow-hidden border border-white/10"
+                style={{ background: "linear-gradient(180deg,#0f1f3d 0%,#0a1730 100%)" }}
+              >
+                <div className="relative h-40 overflow-hidden">
+                  <img src={office.img} alt={office.city} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050b1f] to-transparent" />
+                  <span className="absolute top-3 left-3 text-xs font-semibold bg-red-600/90 text-white px-2.5 py-1 rounded-full">{office.tag}</span>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-semibold text-white text-lg">{office.city}</h3>
+                  <div className="text-xs text-red-400 font-semibold mb-3">{office.state}</div>
+                  <div className="flex items-start gap-2 text-sm text-white/60 mb-2">
+                    <MapPin className="h-4 w-4 text-white/30 mt-0.5 shrink-0" />
+                    {office.address}
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-white/60">
+                    <Phone className="h-4 w-4 text-white/30 shrink-0" />
+                    {office.phone}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <SiteFooter />
     </div>
