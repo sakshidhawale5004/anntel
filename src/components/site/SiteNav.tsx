@@ -32,16 +32,16 @@ const company = [
 function Dropdown({ label, items }: { label: string; items: { to: string; label: string }[] }) {
   return (
     <div className="relative group">
-      <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+      <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors">
         {label} <ChevronDown className="h-3.5 w-3.5 opacity-60" />
       </button>
       <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-        <div className="bg-popover border border-border rounded-xl shadow-card-hover p-2 min-w-[260px]">
+        <div className="bg-navy border border-white/10 rounded-xl shadow-card-hover p-2 min-w-[260px] text-white">
           {items.map((i) => (
             <Link
               key={i.to}
               to={i.to}
-              className="block px-3 py-2 rounded-lg text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+              className="block px-3 py-2 rounded-lg text-sm hover:bg-white/10 hover:text-white transition-colors"
             >
               {i.label}
             </Link>
@@ -55,7 +55,7 @@ function Dropdown({ label, items }: { label: string; items: { to: string; label:
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/60">
+    <header className="sticky top-0 z-50 bg-navy/95 backdrop-blur-xl border-b border-white/10 text-white">
       <div className="container mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <Logo />
@@ -75,7 +75,7 @@ export function SiteNav() {
         </button>
       </div>
       {open && (
-        <div className="lg:hidden border-t border-border bg-background">
+        <div className="lg:hidden border-t border-white/10 bg-navy text-white">
           <div className="container mx-auto px-5 py-4 space-y-4 max-h-[80vh] overflow-y-auto">
             {[
               ["Messaging", messaging],
@@ -84,7 +84,7 @@ export function SiteNav() {
               ["Company", company],
             ].map(([title, items]) => (
               <div key={title as string}>
-                <div className="text-xs uppercase tracking-wide text-muted-foreground font-semibold mb-1">{title as string}</div>
+                <div className="text-xs uppercase tracking-wide text-white/50 font-semibold mb-1">{title as string}</div>
                 {(items as { to: string; label: string }[]).map((i) => (
                   <Link key={i.to} to={i.to} onClick={() => setOpen(false)} className="block py-1.5 text-sm">
                     {i.label}

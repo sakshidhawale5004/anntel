@@ -4,6 +4,7 @@ import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { HeroOrb } from "@/components/site/HeroOrb";
 import { VideoShowcase } from "@/components/site/VideoShowcase";
+import videoAsset from "@/assets/service-hero.mp4.asset.json";
 import {
   MessageSquare, Phone, Mail, Bot, Globe, Shield,
   ArrowRight, Sparkles, Zap, Layers, MessagesSquare,
@@ -37,11 +38,16 @@ function Home() {
     <div className="min-h-screen bg-background">
       <SiteNav />
 
-      {/* HERO — Twilio-style deep navy */}
-      <section className="relative overflow-hidden bg-navy-deep text-white">
-        <div className="absolute inset-0 -z-10 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]">
-          <div className="absolute inset-0 [background-image:linear-gradient(rgba(147,197,253,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(147,197,253,0.08)_1px,transparent_1px)] [background-size:56px_56px]" />
-        </div>
+      {/* HERO — Video background + 3D effects */}
+      <section className="relative w-full overflow-hidden bg-dark text-white min-h-[90vh] flex flex-col justify-center">
+        <video
+          src={videoAsset.url}
+          autoPlay loop muted playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-screen"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/80 via-navy/60 to-background/95" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
+        
         {/* glow orbs */}
         <div className="absolute -top-32 left-1/4 h-[480px] w-[480px] rounded-full bg-[#ef4444]/20 blur-[120px] animate-pulse-glow" />
         <div className="absolute top-40 right-10 h-[420px] w-[420px] rounded-full bg-[#3b82f6]/25 blur-[140px]" />
@@ -73,7 +79,7 @@ function Home() {
           </div>
 
           {/* showcase card centered */}
-          <div className="mt-16 max-w-3xl mx-auto">
+          <div className="mt-16 max-w-3xl mx-auto tilt-3d perspective-[1500px]">
             <HeroOrb />
           </div>
         </div>
@@ -113,7 +119,7 @@ function Home() {
               <Link
                 key={s.title}
                 to={s.to}
-                className="group navy-card rounded-2xl p-6 hover-lift relative overflow-hidden"
+                className="group navy-card rounded-2xl p-6 hover-lift tilt-3d relative overflow-hidden shadow-card hover:shadow-card-hover"
               >
                 <div className="aspect-[16/10] rounded-xl mb-5 bg-gradient-to-br from-[#0a1730] to-[#050b1f] border border-white/10 grid place-items-center relative overflow-hidden">
                   <div className="absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_30%_40%,rgba(239,68,68,0.4),transparent_50%),radial-gradient(circle_at_70%_70%,rgba(59,130,246,0.35),transparent_55%)]" />
@@ -134,7 +140,7 @@ function Home() {
       {/* CX SPLIT */}
       <section className="bg-surface border-y border-border">
         <div className="container mx-auto px-5 lg:px-8 py-24 grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative">
+          <div className="relative tilt-3d perspective-[2000px] hover-lift">
             <div className="absolute -top-6 -left-6 z-10 inline-flex items-center gap-2 rounded-full bg-surface-elevated border border-border px-3 py-1.5 text-xs font-semibold shadow-card">
               <span className="h-2 w-2 rounded-full bg-primary animate-pulse" /> Live conversation
             </div>
