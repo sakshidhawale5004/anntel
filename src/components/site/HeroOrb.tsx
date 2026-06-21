@@ -1,10 +1,14 @@
+import { useMouseTilt } from "@/hooks/useMouseTilt";
+
 /**
  * Hero image showcase composition — replaces the old asset-based orb
  * with the brand homeimage, surrounded by floating service chips and glow rings.
  */
 export function HeroOrb() {
+  const tiltRef = useMouseTilt(12);
+
   return (
-    <div className="relative w-full max-w-[640px] mx-auto select-none">
+    <div ref={tiltRef} className="relative w-full max-w-[640px] mx-auto select-none transition-transform duration-200 ease-out">
       {/* Outer glow */}
       <div className="absolute -inset-6 rounded-3xl opacity-40 blur-3xl"
         style={{ background: "radial-gradient(ellipse at 40% 40%, #ef444440, #3b82f630, transparent 70%)" }}

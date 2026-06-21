@@ -5,7 +5,7 @@ import { SiteFooter } from "./SiteFooter";
 import { ConnectivityBeams } from "./ConnectivityBeams";
 import { VideoHero } from "./VideoHero";
 import { VideoReel } from "./VideoReel";
-import { Check, ArrowRight, type LucideIcon } from "lucide-react";
+import { Check, ArrowRight, Bot, Globe, Shield, Layers, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
 export interface ServicePageProps {
@@ -98,6 +98,53 @@ export function ServicePage({
       <VideoReel eyebrow={`${eyebrow} · stories`} title="See it in action" service={eyebrow} />
 
 
+      {/* CX SPLIT — showcase */}
+      <section
+        className="border-y border-[#0a1730]"
+        style={{ background: "linear-gradient(180deg,#0d1f3f 0%,#0a1730 100%)" }}
+      >
+        <div className="container mx-auto px-5 lg:px-8 py-24 grid lg:grid-cols-2 gap-16 items-center">
+          {/* Image with floating badge */}
+          <div className="relative tilt-3d perspective-[2000px] hover-lift">
+            <div className="absolute -top-6 -left-6 z-10 inline-flex items-center gap-2 rounded-full bg-[#0f1f3d] border border-white/15 px-3 py-1.5 text-xs font-semibold shadow-card text-white">
+              <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" /> Live conversation
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)] conic-ring">
+              <img
+                src="/showcase-person.jpg"
+                alt="Anntel multi-channel customer engagement platform"
+                className="w-full h-full object-cover"
+                style={{ minHeight: "320px", maxHeight: "440px" }}
+              />
+            </div>
+          </div>
+
+          {/* Text */}
+          <div>
+            <div className="text-sm font-semibold text-red-400 mb-2">Transform CX</div>
+            <h2 className="font-display text-4xl md:text-5xl mb-5 text-white">Multi-channel customer connections</h2>
+            <p className="text-white/70 mb-6">
+              Reach customers on their preferred channels — anywhere in the world.
+              Integrate powerful APIs to start building solutions for SMS, WhatsApp,
+              voice, video and email in minutes.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                ["Global reach", "Local presence in 190+ countries."],
+                ["Built on trust", "Compliant, safe and secure by default."],
+                ["Developer first", "Clean REST APIs and SDKs."],
+                ["Scales with you", "From the first OTP to billion-message rollouts."],
+              ].map(([t, d]) => (
+                <div key={t} className="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <div className="font-semibold mb-1 text-white">{t}</div>
+                  <div className="text-sm text-white/60">{d}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats */}
       {stats && (
         <section className="bg-dark text-primary-foreground">
@@ -111,6 +158,42 @@ export function ServicePage({
           </div>
         </section>
       )}
+
+      {/* BENTO — navy blue */}
+      <section
+        className="py-24"
+        style={{ background: "linear-gradient(180deg,#030812 0%,#050b1f 100%)" }}
+      >
+        <div className="container mx-auto px-5 lg:px-8">
+          <div className="max-w-2xl mb-12">
+            <div className="text-sm font-semibold text-red-400 mb-2">Why Anntel</div>
+            <h2 className="font-display text-4xl md:text-5xl mb-4 text-white">One platform, every channel</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            <div className="md:col-span-2 hover-lift rounded-2xl border border-white/10 bg-white/5 p-8 shadow-card relative overflow-hidden">
+              <Layers className="h-8 w-8 text-red-400 mb-4" />
+              <h3 className="text-2xl font-semibold mb-2 text-white">Composable APIs</h3>
+              <p className="text-white/60 max-w-md">Mix SMS, voice, WhatsApp and email in any workflow. Clean REST APIs, webhooks and battle-tested SDKs.</p>
+              <div className="absolute -right-10 -bottom-10 h-56 w-56 orb-3d opacity-70" />
+            </div>
+            <div className="hover-lift rounded-2xl bg-brand text-primary-foreground p-8 shadow-orb">
+              <Shield className="h-8 w-8 mb-4" />
+              <h3 className="text-2xl font-semibold mb-2">Trust & compliance</h3>
+              <p className="opacity-90 text-sm">DLT-ready, opt-in workflows and global carrier-grade reliability.</p>
+            </div>
+            <div className="hover-lift rounded-2xl border border-white/10 bg-white/5 p-8 shadow-card">
+              <Bot className="h-8 w-8 text-blue-400 mb-4" />
+              <h3 className="text-2xl font-semibold mb-2 text-white">AI automation</h3>
+              <p className="text-white/60 text-sm">Deploy chatbots, smart routing and intent-aware journeys across channels.</p>
+            </div>
+            <div className="md:col-span-2 hover-lift rounded-2xl border border-white/10 bg-white/5 p-8 shadow-card">
+              <Globe className="h-8 w-8 text-blue-400 mb-4" />
+              <h3 className="text-2xl font-semibold mb-2 text-white">Global reach, local presence</h3>
+              <p className="text-white/60 max-w-md">Local sender IDs, in-country routing and 190+ destinations on tier-1 carriers.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="container mx-auto px-5 lg:px-8 py-24">
