@@ -194,7 +194,7 @@ function Contact() {
             {/* World map image */}
             <div className="img-3d-frame">
               <img
-                src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800&q=80"
+                src="/map.jpg"
                 alt="Our global offices"
                 className="w-full h-64 lg:h-80 object-cover"
               />
