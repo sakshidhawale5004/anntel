@@ -1,9 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Menu, Moon, Sun, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { useTheme } from "@/lib/theme";
 import { RegistrationDialog } from "./RegistrationDialog";
 
 const messaging = [
@@ -80,8 +79,7 @@ function Dropdown({
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
-  const isDark = theme === "dark";
+  const isDark = true;
 
   return (
     <header
@@ -102,22 +100,6 @@ export function SiteNav() {
           </nav>
         </div>
         <div className="hidden lg:flex items-center gap-2">
-          {/* Day / Night toggle */}
-          <button
-            onClick={toggleTheme}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            className={`h-9 w-9 rounded-full flex items-center justify-center transition-all duration-300 border ${
-              isDark
-                ? "bg-white/10 border-white/20 text-yellow-300 hover:bg-white/20"
-                : "bg-gray-100 border-gray-300 text-gray-700 hover:bg-gray-200"
-            }`}
-          >
-            {isDark ? (
-              <Sun className="h-4 w-4" />
-            ) : (
-              <Moon className="h-4 w-4" />
-            )}
-          </button>
           <Button
             variant="ghost"
             asChild
@@ -138,22 +120,6 @@ export function SiteNav() {
           </Button>
         </div>
         <div className="flex lg:hidden items-center gap-2">
-          {/* Mobile day/night toggle */}
-          <button
-            onClick={toggleTheme}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            className={`h-9 w-9 rounded-full flex items-center justify-center transition-all duration-300 border ${
-              isDark
-                ? "bg-white/10 border-white/20 text-yellow-300 hover:bg-white/20"
-                : "bg-gray-100 border-gray-300 text-gray-700 hover:bg-gray-200"
-            }`}
-          >
-            {isDark ? (
-              <Sun className="h-4 w-4" />
-            ) : (
-              <Moon className="h-4 w-4" />
-            )}
-          </button>
           <button
             className={`p-2 ${isDark ? "text-white" : "text-gray-800"}`}
             onClick={() => setOpen(!open)}

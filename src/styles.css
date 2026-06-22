@@ -41,8 +41,8 @@
   --radius: 0.875rem;
 
   /* Anntel red brand */
-  --background: oklch(0.99 0.005 20);
-  --foreground: oklch(0.18 0.02 20);
+  --background: #000d25;
+  --foreground: oklch(0.97 0.005 20);
 
   --surface: oklch(0.985 0.008 20);
   --surface-elevated: oklch(1 0 0);
@@ -89,7 +89,7 @@
 }
 
 .dark {
-  --background: oklch(0.13 0.025 25);
+  --background: #000d25;
   --foreground: oklch(0.97 0.005 20);
   --surface: oklch(0.16 0.03 25);
   --surface-elevated: oklch(0.2 0.035 25);

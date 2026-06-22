@@ -212,7 +212,7 @@ function Contact() {
               {
                 city: "Mumbai",
                 state: "Maharashtra",
-                address: "Andheri East, Mumbai – 400 069",
+                address: "1005, Rustomjee Reserve, Rangnath Keskar Marg, Dahisar West, Mumbai 400068",
                 phone: "+91 8828 22 3388",
                 img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
                 tag: "Headquarters",

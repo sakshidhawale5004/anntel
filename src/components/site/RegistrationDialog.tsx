@@ -26,9 +26,11 @@ export function RegistrationDialog({ children }: { children: React.ReactNode }) 
 
     try {
       await submitRegistration({ data });
+      
+      const whatsappText = `Hello, I want to register for Free 500 Credits!\n\nName: ${data.fullName}\nEmail: ${data.email}\nPhone: ${data.phoneNumber}\nState: ${data.state}\nSMS Type: ${data.typeOfSms}`;
+      window.open(`https://wa.me/918828223388?text=${encodeURIComponent(whatsappText)}`, "_blank");
+
       setOpen(false);
-      // Optional: navigate to dashboard after successful registration
-      navigate({ to: "/dashboard" });
     } catch (err) {
       console.error(err);
       alert("Failed to register. Please try again.");
