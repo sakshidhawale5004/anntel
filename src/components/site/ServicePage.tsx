@@ -82,13 +82,13 @@ export function ServicePage({
           {features.map((f) => (
             <div
               key={f.title}
-              className="hover-lift rounded-2xl border border-border bg-card p-7 shadow-card"
+              className="hover-lift rounded-2xl border border-gray-200 bg-white p-7 shadow-card"
             >
               <div className="h-11 w-11 rounded-xl bg-brand text-primary-foreground flex items-center justify-center mb-5 shadow-glow">
                 <f.icon className="h-5 w-5" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">{f.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+              <h3 className="text-lg font-semibold mb-2 text-gray-900">{f.title}</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">{f.desc}</p>
             </div>
           ))}
         </div>

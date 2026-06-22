@@ -89,8 +89,8 @@ export function Chatbot() {
         aria-label={open ? "Close chat" : "Open chat"}
         className="fixed bottom-5 right-5 z-[90] h-14 w-14 rounded-full grid place-items-center text-white shadow-2xl transition-transform hover:scale-110"
         style={{
-          background: "linear-gradient(135deg, #1e3a8a, #0f2350)",
-          boxShadow: "0 20px 40px -10px rgba(15, 35, 80, 0.6), 0 0 0 4px rgba(255,255,255,0.05)",
+          background: "#740001",
+          boxShadow: "0 20px 40px -10px rgba(116, 0, 1, 0.6), 0 0 0 4px rgba(255,255,255,0.05)",
         }}
       >
         {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
