@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import * as fs from "fs/promises";
 import * as path from "path";
+import * as os from "os";
 
 // Define the shape of our registration
 export type Registration = {
@@ -12,8 +13,12 @@ export type Registration = {
   createdAt?: string;
 };
 
-// Ensure path points to the root of our project
-const DB_PATH = path.resolve(process.cwd(), "appointments.json");
+// Use /tmp for serverless environments (like Vercel) which have read-only filesystems
+const DB_PATH = process.env.VERCEL || process.env.NODE_ENV === "production" 
+  ? path.join(os.tmpdir(), "appointments.json") 
+  : path.resolve(process.cwd(), "appointments.json");
+
+let fallbackMemoryDb: Registration[] = [];
 
 export const submitRegistration = createServerFn({ method: "POST" })
   .validator((data: Registration) => data)
@@ -24,12 +29,20 @@ export const submitRegistration = createServerFn({ method: "POST" })
         const fileContent = await fs.readFile(DB_PATH, "utf-8");
         currentData = JSON.parse(fileContent);
       } catch (err) {
-        // File doesn't exist, start with empty array
+        // File doesn't exist, use fallback
+        currentData = fallbackMemoryDb;
       }
       
-      currentData.push({ ...data, createdAt: new Date().toISOString() });
+      const newEntry = { ...data, createdAt: new Date().toISOString() };
+      currentData.push(newEntry);
+      fallbackMemoryDb = currentData; // keep in sync
       
-      await fs.writeFile(DB_PATH, JSON.stringify(currentData, null, 2));
+      try {
+        await fs.writeFile(DB_PATH, JSON.stringify(currentData, null, 2));
+      } catch (writeErr) {
+        console.warn("Could not write to file system, using memory fallback.");
+      }
+      
       return { success: true };
     } catch (error) {
       console.error("Failed to save registration:", error);
@@ -44,6 +57,6 @@ export const getRegistrationCount = createServerFn({ method: "GET" })
       const data = JSON.parse(fileContent);
       return data.length;
     } catch (err) {
-      return 0; // File doesn't exist or error, assume 0
+      return fallbackMemoryDb.length;
     }
   });
