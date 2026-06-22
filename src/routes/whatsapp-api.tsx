@@ -53,41 +53,41 @@ function WhatsAppAPI() {
       </section>
 
       {/* Logo Strip */}
-      <section className="bg-white border-b border-gray-200 py-10">
+      <section className="border-b border-white/10 py-10" style={{ background: "linear-gradient(180deg,#050b1f 0%,#0a1730 100%)" }}>
         <div className="container mx-auto px-5 lg:px-8">
-          <div className="flex flex-wrap justify-center md:justify-between items-center gap-8 grayscale">
+          <div className="flex flex-wrap justify-center md:justify-between items-center gap-8 grayscale opacity-70">
             {logos.map((l) => (
-              <div key={l} className="font-display text-2xl font-bold text-gray-800">{l}</div>
+              <div key={l} className="font-display text-2xl font-bold text-white">{l}</div>
             ))}
           </div>
         </div>
       </section>
 
       {/* API Cards Section */}
-      <section className="bg-white py-24">
+      <section className="py-24" style={{ background: "linear-gradient(180deg,#0a1730 0%,#050b1f 100%)" }}>
         <div className="container mx-auto px-5 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-6 text-[#02163b]">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mb-6 text-white">
             Build WhatsApp experiences with less hassle, more hustle
           </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto mb-20 text-lg">
+          <p className="text-white/70 max-w-3xl mx-auto mb-20 text-lg">
             Deliver rich, interactive experiences on WhatsApp to connect with a 2-billion audience on the world's most popular messaging app. With the Anntel App Services Platform, you can build a complete solution that moves seamlessly from chat to voice in the same thread.
           </p>
 
-          <h3 className="font-display text-2xl md:text-3xl mb-12 text-[#02163b]">Simple APIs that support any interaction</h3>
+          <h3 className="font-display text-2xl md:text-3xl mb-12 text-white">Simple APIs that support any interaction</h3>
           <div className="grid md:grid-cols-3 gap-6 text-left max-w-6xl mx-auto">
             {[
               { icon: MessageSquare, title: "Programmable Messaging API", desc: "Send two-way WhatsApp messages for alerts, notifications, marketing, and promotions." },
               { icon: MessagesSquare, title: "Conversations API", desc: "Your WhatsApp integration fits into any omnichannel conversation. Connect front-line tools for customer support and sales enablement." },
               { icon: Phone, title: "Programmable Voice API", desc: "Seamlessly enable WhatsApp business calling and extend customer engagement from chat to voice-simply unlocking new channels." },
             ].map((card, i) => (
-              <div key={i} className="rounded-xl border border-gray-200 p-8 shadow-sm hover:shadow-lg transition-all duration-300 bg-white">
-                <div className="h-12 w-12 rounded-full bg-[#740001] text-white flex items-center justify-center mb-6">
+              <div key={i} className="rounded-xl border border-white/10 p-8 shadow-card hover:shadow-card-hover transition-all duration-300 bg-white/5 hover:bg-white/10">
+                <div className="h-12 w-12 rounded-full bg-[#740001] text-white flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(116,0,1,0.5)]">
                   <card.icon className="h-6 w-6" />
                 </div>
-                <h4 className="text-xl font-semibold mb-3 text-[#02163b]">{card.title}</h4>
-                <p className="text-gray-600 text-sm mb-6 leading-relaxed">{card.desc}</p>
-                <Link to="/contact" className="text-[#02163b] font-semibold text-sm hover:underline hover:text-blue-600 flex items-center gap-1">
-                  Explore the API <span className="text-lg">→</span>
+                <h4 className="text-xl font-semibold mb-3 text-white">{card.title}</h4>
+                <p className="text-white/70 text-sm mb-6 leading-relaxed">{card.desc}</p>
+                <Link to="/contact" className="text-white font-semibold text-sm hover:underline flex items-center gap-1 group">
+                  Explore the API <span className="text-lg group-hover:translate-x-1 transition-transform">→</span>
                 </Link>
               </div>
             ))}

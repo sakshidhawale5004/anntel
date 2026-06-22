@@ -61,10 +61,10 @@ export function ConnectivityBeams() {
             style={{ left, top, animationDelay: `${i * 0.4}s` }}
           >
             <div className="flex flex-col items-center gap-1">
-              <div className="h-10 w-10 rounded-xl bg-surface-elevated border border-border shadow-card grid place-items-center text-primary">
+              <div className="h-10 w-10 rounded-xl bg-white border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.2)] grid place-items-center text-[#740001]">
                 <n.icon className="h-4 w-4" />
               </div>
-              <span className="text-[10px] font-semibold bg-surface-elevated/90 backdrop-blur px-2 py-0.5 rounded-full border border-border">
+              <span className="text-[10px] font-semibold bg-white text-gray-900 px-2 py-0.5 rounded-full border border-white/20 shadow-sm">
                 {n.label}
               </span>
             </div>

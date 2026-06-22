@@ -82,13 +82,16 @@ export function ServicePage({
           {features.map((f) => (
             <div
               key={f.title}
-              className="hover-lift rounded-2xl border border-gray-200 bg-white p-7 shadow-card"
+              className="hover-lift rounded-2xl border border-white/10 bg-white/5 p-7 shadow-card relative overflow-hidden"
             >
-              <div className="h-11 w-11 rounded-xl bg-brand text-primary-foreground flex items-center justify-center mb-5 shadow-glow">
+              <div className="h-11 w-11 rounded-xl bg-[#740001] text-white flex items-center justify-center mb-5 shadow-[0_0_15px_rgba(116,0,1,0.5)] relative z-10">
                 <f.icon className="h-5 w-5" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-gray-900">{f.title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{f.desc}</p>
+              <h3 className="text-lg font-semibold mb-2 text-white relative z-10">{f.title}</h3>
+              <p className="text-sm text-white/70 leading-relaxed relative z-10">{f.desc}</p>
+              
+              {/* Subtle background gradient on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
             </div>
           ))}
         </div>
