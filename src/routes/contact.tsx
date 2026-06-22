@@ -108,9 +108,17 @@ function Contact() {
                   placeholder="Tell us about your project..."
                 />
               </div>
-              <div className="sm:col-span-2 flex justify-end">
-                <Button variant="hero" size="lg" type="submit">
-                  Send message <Send className="h-4 w-4" />
+              <div className="sm:col-span-2 mt-2">
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" required className="mt-1 rounded border-white/20 bg-white/5 text-red-500 focus:ring-red-500/50" />
+                  <span className="text-sm text-white">
+                    I hereby consent to receive promotional updates and communications from Anntel India via Email, SMS, WhatsApp, RCS, and other communication channels.
+                  </span>
+                </label>
+              </div>
+              <div className="sm:col-span-2 mt-4">
+                <Button size="lg" type="submit" className="text-white w-full bg-[#ff5722] hover:bg-[#e64a19] text-base h-12 rounded-md">
+                  Send
                 </Button>
               </div>
             </form>

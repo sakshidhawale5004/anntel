@@ -3,7 +3,6 @@ import { Logo } from "./Logo";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { RegistrationDialog } from "./RegistrationDialog";
 
 const messaging = [
   { to: "/anntel-messaging", label: "Anntel Messaging" },
@@ -107,14 +106,13 @@ export function SiteNav() {
           >
             <Link to="/contact">Contact Sales</Link>
           </Button>
-          <RegistrationDialog>
-            <Button
-              variant="ghost"
-              className={isDark ? "text-white hover:text-white hover:bg-white/10" : "text-gray-700 hover:text-gray-900 cursor-pointer"}
-            >
-              Login
-            </Button>
-          </RegistrationDialog>
+          <Button
+            variant="ghost"
+            asChild
+            className={isDark ? "text-white hover:text-white hover:bg-white/10" : "text-gray-700 hover:text-gray-900 cursor-pointer"}
+          >
+            <a href="https://anntelair.com/">Login</a>
+          </Button>
           <Button asChild>
             <Link to="/contact">Start for free</Link>
           </Button>
