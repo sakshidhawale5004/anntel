@@ -11,6 +11,16 @@ export function RegistrationDialog({ children }: { children: React.ReactNode }) 
   const [loading, setLoading] = React.useState(false);
   const navigate = useNavigate();
 
+  React.useEffect(() => {
+    if (!sessionStorage.getItem("hasSeenRegistrationDialog")) {
+      const timer = setTimeout(() => {
+        setOpen(true);
+        sessionStorage.setItem("hasSeenRegistrationDialog", "true");
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -73,7 +83,7 @@ export function RegistrationDialog({ children }: { children: React.ReactNode }) 
                     name="fullName" 
                     placeholder="Full Name" 
                     required 
-                    className="border-0 border-b border-gray-300 rounded-none px-0 focus-visible:ring-0 focus-visible:border-blue-600 bg-transparent"
+                    className="border-0 border-b border-gray-300 rounded-none px-0 focus-visible:ring-0 focus-visible:border-blue-600 bg-transparent text-gray-900 placeholder:text-gray-400"
                   />
                 </div>
                 <div>
@@ -82,7 +92,7 @@ export function RegistrationDialog({ children }: { children: React.ReactNode }) 
                     type="email" 
                     placeholder="Email" 
                     required 
-                    className="border-0 border-b border-gray-300 rounded-none px-0 focus-visible:ring-0 focus-visible:border-blue-600 bg-transparent"
+                    className="border-0 border-b border-gray-300 rounded-none px-0 focus-visible:ring-0 focus-visible:border-blue-600 bg-transparent text-gray-900 placeholder:text-gray-400"
                   />
                 </div>
                 <div>
@@ -91,7 +101,7 @@ export function RegistrationDialog({ children }: { children: React.ReactNode }) 
                     type="tel" 
                     placeholder="Phone Number" 
                     required 
-                    className="border-0 border-b border-gray-300 rounded-none px-0 focus-visible:ring-0 focus-visible:border-blue-600 bg-transparent"
+                    className="border-0 border-b border-gray-300 rounded-none px-0 focus-visible:ring-0 focus-visible:border-blue-600 bg-transparent text-gray-900 placeholder:text-gray-400"
                   />
                 </div>
                 <div>
@@ -99,14 +109,14 @@ export function RegistrationDialog({ children }: { children: React.ReactNode }) 
                     name="state" 
                     placeholder="State" 
                     required 
-                    className="border-0 border-b border-gray-300 rounded-none px-0 focus-visible:ring-0 focus-visible:border-blue-600 bg-transparent"
+                    className="border-0 border-b border-gray-300 rounded-none px-0 focus-visible:ring-0 focus-visible:border-blue-600 bg-transparent text-gray-900 placeholder:text-gray-400"
                   />
                 </div>
               </div>
               
               <div>
                 <Select name="typeOfSms" required defaultValue="promotional">
-                  <SelectTrigger className="border-0 border-b border-gray-300 rounded-none px-0 focus:ring-0 focus-visible:ring-0 shadow-none bg-transparent h-12">
+                  <SelectTrigger className="border-0 border-b border-gray-300 rounded-none px-0 focus:ring-0 focus-visible:ring-0 shadow-none bg-transparent h-12 text-gray-900">
                     <SelectValue placeholder="Type Of SMS" />
                   </SelectTrigger>
                   <SelectContent>
@@ -120,7 +130,7 @@ export function RegistrationDialog({ children }: { children: React.ReactNode }) 
               <Button 
                 type="submit" 
                 disabled={loading} 
-                className="w-full h-14 text-lg bg-[#5551db] hover:bg-[#4338ca] text-white rounded-none mt-8 transition-colors"
+                className="w-full h-14 text-lg bg-[#740001] hover:bg-[#9a0001] text-white rounded-none mt-8 transition-colors"
               >
                 {loading ? "Sending..." : "Send →"}
               </Button>

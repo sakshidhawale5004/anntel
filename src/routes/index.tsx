@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { TimelineNav } from "@/components/site/TimelineNav";
 import { HeroOrb } from "@/components/site/HeroOrb";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import {
@@ -106,6 +107,9 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* TIMELINE NAV */}
+      <TimelineNav />
 
       {/* BUILDING BLOCKS — with Unsplash photos + 3D cards */}
       <section
