@@ -64,8 +64,11 @@ function Home() {
       <section className="relative w-full overflow-hidden text-white min-h-[80vh] flex flex-col justify-center bg-[#02163b]">
         <div className="container mx-auto px-5 lg:px-8 pt-20 lg:pt-28 pb-16 lg:pb-24 relative z-10 flex flex-col lg:flex-row items-center gap-12">
           <div className="flex-1 text-left">
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-tight mb-6 max-w-2xl text-white font-medium">
-              Realize the potential of customer engagement
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#740001]/20 px-3 py-1 text-xs font-semibold mb-6 text-white">
+              <Sparkles className="h-3 w-3 text-[#740001]" /> The customer engagement platform
+            </div>
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-tight mb-6 max-w-3xl text-white font-medium">
+              Exploring cloud connective <span style={{ background: "linear-gradient(135deg,#fff 0%,#93c5fd 60%,#740001 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>possibilities.</span>
             </h1>
             <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-9">
               Build real conversations with your customers. Anntel unifies SMS, WhatsApp,
@@ -240,7 +243,7 @@ function Home() {
               <p className="text-white/60 max-w-md">Mix SMS, voice, WhatsApp and email in any workflow. Clean REST APIs, webhooks and battle-tested SDKs.</p>
               <div className="absolute -right-10 -bottom-10 h-56 w-56 orb-3d opacity-70" />
             </div>
-            <div className="hover-lift rounded-2xl bg-brand text-primary-foreground p-8 shadow-orb">
+            <div className="hover-lift rounded-2xl bg-[#740001] text-white p-8 shadow-orb">
               <Shield className="h-8 w-8 mb-4" />
               <h3 className="text-2xl font-semibold mb-2">Trust & compliance</h3>
               <p className="opacity-90 text-sm">DLT-ready, opt-in workflows and global carrier-grade reliability.</p>
@@ -262,7 +265,7 @@ function Home() {
       {/* CTA */}
       <section className="py-24" style={{ background: "#050b1f" }}>
         <div className="container mx-auto px-5 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-brand p-12 lg:p-20 text-primary-foreground text-center shadow-orb">
+          <div className="relative overflow-hidden rounded-3xl bg-[#740001] p-12 lg:p-20 text-white text-center shadow-orb">
             <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
             <div className="absolute -left-20 -bottom-20 h-80 w-80 rounded-full bg-black/30 blur-3xl" />
             <div className="relative">

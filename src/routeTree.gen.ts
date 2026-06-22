@@ -21,6 +21,7 @@ import { Route as InternationalMessagingRouteImport } from './routes/internation
 import { Route as HlrLookupRouteImport } from './routes/hlr-lookup'
 import { Route as EmailServicesRouteImport } from './routes/email-services'
 import { Route as DatabaseCampaignsRouteImport } from './routes/database-campaigns'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ChatbotsRouteImport } from './routes/chatbots'
 import { Route as AnntelMessagingRouteImport } from './routes/anntel-messaging'
@@ -89,6 +90,11 @@ const DatabaseCampaignsRoute = DatabaseCampaignsRouteImport.update({
   path: '/database-campaigns',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -127,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/anntel-messaging': typeof AnntelMessagingRoute
   '/chatbots': typeof ChatbotsRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/database-campaigns': typeof DatabaseCampaignsRoute
   '/email-services': typeof EmailServicesRoute
   '/hlr-lookup': typeof HlrLookupRoute
@@ -147,6 +154,7 @@ export interface FileRoutesByTo {
   '/anntel-messaging': typeof AnntelMessagingRoute
   '/chatbots': typeof ChatbotsRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/database-campaigns': typeof DatabaseCampaignsRoute
   '/email-services': typeof EmailServicesRoute
   '/hlr-lookup': typeof HlrLookupRoute
@@ -168,6 +176,7 @@ export interface FileRoutesById {
   '/anntel-messaging': typeof AnntelMessagingRoute
   '/chatbots': typeof ChatbotsRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/database-campaigns': typeof DatabaseCampaignsRoute
   '/email-services': typeof EmailServicesRoute
   '/hlr-lookup': typeof HlrLookupRoute
@@ -190,6 +199,7 @@ export interface FileRouteTypes {
     | '/anntel-messaging'
     | '/chatbots'
     | '/contact'
+    | '/dashboard'
     | '/database-campaigns'
     | '/email-services'
     | '/hlr-lookup'
@@ -210,6 +220,7 @@ export interface FileRouteTypes {
     | '/anntel-messaging'
     | '/chatbots'
     | '/contact'
+    | '/dashboard'
     | '/database-campaigns'
     | '/email-services'
     | '/hlr-lookup'
@@ -230,6 +241,7 @@ export interface FileRouteTypes {
     | '/anntel-messaging'
     | '/chatbots'
     | '/contact'
+    | '/dashboard'
     | '/database-campaigns'
     | '/email-services'
     | '/hlr-lookup'
@@ -251,6 +263,7 @@ export interface RootRouteChildren {
   AnntelMessagingRoute: typeof AnntelMessagingRoute
   ChatbotsRoute: typeof ChatbotsRoute
   ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRoute
   DatabaseCampaignsRoute: typeof DatabaseCampaignsRoute
   EmailServicesRoute: typeof EmailServicesRoute
   HlrLookupRoute: typeof HlrLookupRoute
@@ -351,6 +364,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DatabaseCampaignsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -403,6 +423,7 @@ const rootRouteChildren: RootRouteChildren = {
   AnntelMessagingRoute: AnntelMessagingRoute,
   ChatbotsRoute: ChatbotsRoute,
   ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRoute,
   DatabaseCampaignsRoute: DatabaseCampaignsRoute,
   EmailServicesRoute: EmailServicesRoute,
   HlrLookupRoute: HlrLookupRoute,
