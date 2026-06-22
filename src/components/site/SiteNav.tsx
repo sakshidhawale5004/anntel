@@ -122,10 +122,17 @@ export function SiteNav() {
             asChild
             className={isDark ? "text-white hover:text-white hover:bg-white/10" : "text-gray-700 hover:text-gray-900"}
           >
-            <Link to="/contact">Sign in</Link>
+            <Link to="/contact">Contact Sales</Link>
           </Button>
-          <Button variant="hero" asChild>
-            <Link to="/contact">Talk to sales</Link>
+          <Button
+            variant="ghost"
+            asChild
+            className={isDark ? "text-white hover:text-white hover:bg-white/10" : "text-gray-700 hover:text-gray-900"}
+          >
+            <Link to="/contact">Login</Link>
+          </Button>
+          <Button asChild>
+            <Link to="/contact">Start for free</Link>
           </Button>
         </div>
         <div className="flex lg:hidden items-center gap-2">

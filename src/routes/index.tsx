@@ -60,62 +60,44 @@ function Home() {
     <div className="min-h-screen bg-background">
       <SiteNav />
 
-      {/* HERO — Deep navy background + 3D effects */}
-      <section
-        className="relative w-full overflow-hidden text-white min-h-[90vh] flex flex-col justify-center"
-        style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, #122a55 0%, #050b1f 60%)" }}
-      >
-        <div className="absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]">
-          <div className="absolute inset-0 [background-image:linear-gradient(rgba(147,197,253,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(147,197,253,0.08)_1px,transparent_1px)] [background-size:56px_56px]" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050b1f]/95" />
-
-        {/* glow orbs */}
-        <div className="absolute -top-32 left-1/4 h-[480px] w-[480px] rounded-full bg-[#ef4444]/20 blur-[120px] animate-pulse-glow" />
-        <div className="absolute top-40 right-10 h-[420px] w-[420px] rounded-full bg-[#3b82f6]/25 blur-[140px]" />
-
-        <div className="container mx-auto px-5 lg:px-8 pt-20 lg:pt-28 pb-24 lg:pb-36 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur px-3 py-1 text-xs font-semibold mb-7 text-white">
-            <Sparkles className="h-3 w-3 text-[#ef4444]" /> The customer engagement platform
+      {/* HERO — Solid navy background */}
+      <section className="relative w-full overflow-hidden text-white min-h-[80vh] flex flex-col justify-center bg-[#02163b]">
+        <div className="container mx-auto px-5 lg:px-8 pt-20 lg:pt-28 pb-16 lg:pb-24 relative z-10 flex flex-col lg:flex-row items-center gap-12">
+          <div className="flex-1 text-left">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-tight mb-6 max-w-2xl text-white font-medium">
+              Realize the potential of customer engagement
+            </h1>
+            <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-9">
+              Build real conversations with your customers. Anntel unifies SMS, WhatsApp,
+              RCS, voice and email behind one trusted, developer-first platform.
+            </p>
+            <div className="flex flex-wrap gap-4 mb-12">
+              <Button size="xl" asChild className="bg-white text-[#02163b] hover:bg-gray-100 font-semibold border-none">
+                <Link to="/contact">Start for free</Link>
+              </Button>
+              <Button variant="outline" size="xl" asChild className="border border-white bg-transparent text-white hover:bg-white/10 font-semibold">
+                <Link to="/contact">Talk to sales</Link>
+              </Button>
+            </div>
+            <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/80 font-medium">
+              <div className="flex items-center gap-2">✓ 99.95% uptime SLA</div>
+              <div className="flex items-center gap-2">✓ 190+ countries</div>
+              <div className="flex items-center gap-2">✓ ISO-grade security</div>
+            </div>
           </div>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.02] mb-6 max-w-5xl mx-auto text-white"
-              style={{ textShadow: "0 4px 32px rgba(0,0,0,0.5)" }}>
-            Exploring cloud<br />
-            connective <span style={{ background: "linear-gradient(135deg,#fff 0%,#93c5fd 60%,#ef4444 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>possibilities.</span>
-          </h1>
-          <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-9">
-            Build real conversations with your customers. Anntel unifies SMS, WhatsApp,
-            RCS, voice and email behind one trusted, developer-first platform.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            <Button variant="hero" size="xl" asChild>
-              <Link to="/contact">Start for free <ArrowRight className="h-4 w-4" /></Link>
-            </Button>
-            <Button size="xl" asChild className="bg-white text-[#0a1730] hover:bg-white/90">
-              <Link to="/contact">Contact sales</Link>
-            </Button>
-          </div>
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-white/60">
-            <div className="flex items-center gap-2"><Zap className="h-4 w-4 text-[#ef4444]" /> 99.95% uptime SLA</div>
-            <div className="flex items-center gap-2"><Globe className="h-4 w-4 text-[#ef4444]" /> 190+ countries</div>
-            <div className="flex items-center gap-2"><Shield className="h-4 w-4 text-[#ef4444]" /> ISO-grade security</div>
-          </div>
-
-          {/* showcase card centered */}
-          <div className="mt-16 max-w-3xl mx-auto tilt-3d perspective-[1500px]">
-            <HeroOrb />
+          <div className="flex-1 w-full max-w-lg hidden lg:block">
+            <div className="rounded-xl overflow-hidden shadow-2xl bg-white/5 border border-white/10 p-2">
+               <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Platform" className="w-full h-auto object-cover rounded-lg" />
+            </div>
           </div>
         </div>
 
         {/* logo marquee */}
-        <div className="border-y border-white/10 bg-black/30 backdrop-blur relative">
-          <div className="container mx-auto px-5 lg:px-8 py-6 overflow-hidden">
-            <div className="text-xs uppercase tracking-wider text-white/50 text-center mb-3">
-              Trusted by teams shipping conversations worldwide
-            </div>
-            <div className="flex gap-12 animate-marquee whitespace-nowrap">
+        <div className="bg-white border-b border-gray-200 mt-auto">
+          <div className="container mx-auto px-5 lg:px-8 py-10 overflow-hidden">
+            <div className="flex gap-12 animate-marquee whitespace-nowrap items-center">
               {[...logos, ...logos].map((l, i) => (
-                <div key={i} className="font-display text-2xl text-white/40">{l}</div>
+                <div key={i} className="font-display text-2xl text-gray-400 font-bold">{l}</div>
               ))}
             </div>
           </div>
