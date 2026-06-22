@@ -3,6 +3,7 @@ import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Send, MessageSquare, Clock, Shield } from "lucide-react";
+import { submitContact } from "@/lib/db";
 import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
@@ -80,10 +81,20 @@ function Contact() {
               <p className="text-white/60">We received your message and will respond within one business day.</p>
             </div>
           ) : (
-            <form onSubmit={(e) => { 
+            <form onSubmit={async (e) => { 
               e.preventDefault(); 
               const fd = new FormData(e.currentTarget);
-              const text = `New Contact Request:%0AFirst Name: ${fd.get('first')}%0ALast Name: ${fd.get('last')}%0AEmail: ${fd.get('email')}%0ACompany: ${fd.get('company')}%0APhone: ${fd.get('phone')}%0AInterested in: ${fd.get('interest')}%0AProject: ${fd.get('project')}`;
+              const data = {
+                first: fd.get('first') as string,
+                last: fd.get('last') as string,
+                email: fd.get('email') as string,
+                company: fd.get('company') as string,
+                phone: fd.get('phone') as string,
+                interest: fd.get('interest') as string,
+                project: fd.get('project') as string,
+              };
+              await submitContact({ data }).catch(console.error);
+              const text = `New Contact Request:%0AFirst Name: ${data.first}%0ALast Name: ${data.last}%0AEmail: ${data.email}%0ACompany: ${data.company}%0APhone: ${data.phone}%0AInterested in: ${data.interest}%0AProject: ${data.project}`;
               window.open(`https://wa.me/918828223388?text=${text}`, '_blank');
               setSent(true); 
             }} className="grid sm:grid-cols-2 gap-5">

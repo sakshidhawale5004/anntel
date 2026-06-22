@@ -13,13 +13,30 @@ export type Registration = {
   createdAt?: string;
 };
 
+export type ContactSubmission = {
+  first: string;
+  last: string;
+  email: string;
+  company: string;
+  phone: string;
+  interest: string;
+  project: string;
+  createdAt?: string;
+};
+
 // Use /tmp for serverless environments (like Vercel) which have read-only filesystems
 const DB_PATH = process.env.VERCEL || process.env.NODE_ENV === "production" 
   ? path.join(os.tmpdir(), "appointments.json") 
   : path.resolve(process.cwd(), "appointments.json");
 
-let fallbackMemoryDb: Registration[] = [];
+const CONTACT_DB_PATH = process.env.VERCEL || process.env.NODE_ENV === "production" 
+  ? path.join(os.tmpdir(), "contacts.json") 
+  : path.resolve(process.cwd(), "contacts.json");
 
+let fallbackMemoryDb: Registration[] = [];
+let fallbackContactDb: ContactSubmission[] = [];
+
+// REGISTRATIONS
 export const submitRegistration = createServerFn({ method: "POST" })
   .validator((data: Registration) => data)
   .handler(async ({ data }) => {
@@ -29,13 +46,12 @@ export const submitRegistration = createServerFn({ method: "POST" })
         const fileContent = await fs.readFile(DB_PATH, "utf-8");
         currentData = JSON.parse(fileContent);
       } catch (err) {
-        // File doesn't exist, use fallback
         currentData = fallbackMemoryDb;
       }
       
       const newEntry = { ...data, createdAt: new Date().toISOString() };
       currentData.push(newEntry);
-      fallbackMemoryDb = currentData; // keep in sync
+      fallbackMemoryDb = currentData;
       
       try {
         await fs.writeFile(DB_PATH, JSON.stringify(currentData, null, 2));
@@ -58,5 +74,55 @@ export const getRegistrationCount = createServerFn({ method: "GET" })
       return data.length;
     } catch (err) {
       return fallbackMemoryDb.length;
+    }
+  });
+
+export const getRegistrationsList = createServerFn({ method: "GET" })
+  .handler(async (): Promise<Registration[]> => {
+    try {
+      const fileContent = await fs.readFile(DB_PATH, "utf-8");
+      return JSON.parse(fileContent);
+    } catch (err) {
+      return fallbackMemoryDb;
+    }
+  });
+
+// CONTACTS
+export const submitContact = createServerFn({ method: "POST" })
+  .validator((data: ContactSubmission) => data)
+  .handler(async ({ data }) => {
+    try {
+      let currentData: ContactSubmission[] = [];
+      try {
+        const fileContent = await fs.readFile(CONTACT_DB_PATH, "utf-8");
+        currentData = JSON.parse(fileContent);
+      } catch (err) {
+        currentData = fallbackContactDb;
+      }
+      
+      const newEntry = { ...data, createdAt: new Date().toISOString() };
+      currentData.push(newEntry);
+      fallbackContactDb = currentData;
+      
+      try {
+        await fs.writeFile(CONTACT_DB_PATH, JSON.stringify(currentData, null, 2));
+      } catch (writeErr) {
+        console.warn("Could not write to file system, using memory fallback.");
+      }
+      
+      return { success: true };
+    } catch (error) {
+      console.error("Failed to save contact:", error);
+      throw error;
+    }
+  });
+
+export const getContactsList = createServerFn({ method: "GET" })
+  .handler(async (): Promise<ContactSubmission[]> => {
+    try {
+      const fileContent = await fs.readFile(CONTACT_DB_PATH, "utf-8");
+      return JSON.parse(fileContent);
+    } catch (err) {
+      return fallbackContactDb;
     }
   });
