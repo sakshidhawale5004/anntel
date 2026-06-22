@@ -91,7 +91,7 @@ function Home() {
           </div>
           <div className="flex-1 w-full max-w-lg hidden lg:block">
             <div className="rounded-xl overflow-hidden shadow-2xl bg-white/5 border border-white/10 p-2">
-               <img src="/homepageherosectionimage.jpg" alt="Platform" className="w-full h-auto object-cover rounded-lg" />
+               <img src="/homepageherosectionimage.jpg" alt="Platform" className="w-full h-auto max-h-[360px] object-cover rounded-lg" />
             </div>
           </div>
         </div>

@@ -54,7 +54,7 @@ export function RegistrationDialog({ children }: { children: React.ReactNode }) 
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[900px] p-0 overflow-hidden bg-white">
+      <DialogContent className="sm:max-w-[900px] p-0 overflow-hidden bg-white text-gray-900 [&>button]:text-gray-900 [&>button:hover]:text-black">
         <DialogTitle className="sr-only">Get Free 500 Credits On Registration</DialogTitle>
         <DialogDescription className="sr-only">Register to get free credits</DialogDescription>
         <div className="flex flex-col md:flex-row h-full max-h-[90vh]">
