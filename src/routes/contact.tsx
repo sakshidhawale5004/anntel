@@ -80,7 +80,13 @@ function Contact() {
               <p className="text-white/60">We received your message and will respond within one business day.</p>
             </div>
           ) : (
-            <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="grid sm:grid-cols-2 gap-5">
+            <form onSubmit={(e) => { 
+              e.preventDefault(); 
+              const fd = new FormData(e.currentTarget);
+              const text = `New Contact Request:%0AFirst Name: ${fd.get('first')}%0ALast Name: ${fd.get('last')}%0AEmail: ${fd.get('email')}%0ACompany: ${fd.get('company')}%0APhone: ${fd.get('phone')}%0AInterested in: ${fd.get('interest')}%0AProject: ${fd.get('project')}`;
+              window.open(`https://wa.me/918828223388?text=${text}`, '_blank');
+              setSent(true); 
+            }} className="grid sm:grid-cols-2 gap-5">
               <Field label="First name" name="first" required />
               <Field label="Last name" name="last" required />
               <Field label="Work email" name="email" type="email" required />
@@ -88,7 +94,7 @@ function Contact() {
               <Field label="Phone" name="phone" type="tel" />
               <div>
                 <label className="block text-sm font-medium mb-1.5 text-white/80">Interested in</label>
-                <select className="w-full h-11 rounded-xl border border-white/15 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/50 text-white"
+                <select name="interest" className="w-full h-11 rounded-xl border border-white/15 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/50 text-white"
                   style={{ background: "rgba(255,255,255,0.05)" }}>
                   <option style={{ background: "#0a1730" }}>SMS / Messaging</option>
                   <option style={{ background: "#0a1730" }}>WhatsApp Business API</option>
@@ -102,6 +108,7 @@ function Contact() {
               <div className="sm:col-span-2">
                 <label className="block text-sm font-medium mb-1.5 text-white/80">How can we help?</label>
                 <textarea
+                  name="project"
                   rows={5}
                   className="w-full rounded-xl border border-white/15 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/50 text-white resize-none"
                   style={{ background: "rgba(255,255,255,0.05)" }}
