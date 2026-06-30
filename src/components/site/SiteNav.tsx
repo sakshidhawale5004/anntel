@@ -24,7 +24,6 @@ const channels = [
   { to: "/hlr-lookup", label: "HLR Lookup" },
 ];
 const company = [
-  { to: "/about", label: "About" },
   { to: "/anntel-digital", label: "Anntel Digital" },
   { to: "/admin-reseller", label: "Admin & Reseller" },
   { to: "/contact", label: "Contact" },
@@ -93,6 +92,7 @@ export function SiteNav() {
         <div className="flex items-center gap-8">
           <Logo isDark={isDark} />
           <nav className="hidden lg:flex items-center">
+            <Link to="/about" className={`px-3 py-2 text-sm font-medium transition-colors ${isDark ? "text-white/80 hover:text-white" : "text-gray-700 hover:text-gray-900"}`}>About</Link>
             <Dropdown label="Messaging" items={messaging} isDark={isDark} />
             <Dropdown label="WhatsApp" items={whatsapp} isDark={isDark} />
             <Dropdown label="Channels" items={channels} isDark={isDark} />
@@ -140,6 +140,7 @@ export function SiteNav() {
               ["WhatsApp", whatsapp],
               ["Channels", channels],
               ["Company", company],
+              ["About", [{ to: "/about", label: "About Anntel" }]],
             ].map(([title, items]) => (
               <div key={title as string}>
                 <div
