@@ -117,7 +117,7 @@ function Home() {
                   key={i} 
                   src={src} 
                   alt="Client Logo" 
-                  className="h-12 md:h-16 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                  className="h-12 md:h-16 w-auto object-contain hover:scale-105 transition-all duration-300" 
                 />
               ))}
             </div>

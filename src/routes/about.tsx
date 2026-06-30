@@ -142,7 +142,7 @@ function About() {
                 key={i} 
                 src={src} 
                 alt="Client Logo" 
-                className="h-12 md:h-16 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-all duration-300" 
+                className="h-12 md:h-16 w-auto object-contain hover:scale-105 transition-all duration-300" 
               />
             ))}
           </div>
