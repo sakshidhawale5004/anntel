@@ -24,6 +24,7 @@ const channels = [
   { to: "/hlr-lookup", label: "HLR Lookup" },
 ];
 const company = [
+  { to: "/about", label: "About" },
   { to: "/anntel-digital", label: "Anntel Digital" },
   { to: "/admin-reseller", label: "Admin & Reseller" },
   { to: "/contact", label: "Contact" },
