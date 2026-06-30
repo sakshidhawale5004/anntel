@@ -51,7 +51,16 @@ const solutions = [
 ];
 
 
-const logos = ["Acme", "Globex", "Initech", "Umbrella", "Stark", "Wayne", "Hooli", "Pied Piper"];
+const clientLogos = [
+  "/L&T.jpg",
+  "/202402053114902_202410.png",
+  "/kotak.jpg",
+  "/5-removebg-preview.png",
+  "/4-removebg-preview2-1.png",
+  "/3-removebg-preview-1.png",
+  "/2-removebg-preview3-1.png",
+  "/1-removebg-preview3-1.png"
+];
 
 function Home() {
   const { ref: blocksRef, isVisible: blocksVisible } = useScrollReveal();
@@ -98,10 +107,18 @@ function Home() {
 
         {/* logo marquee */}
         <div className="bg-white border-b border-gray-200 mt-auto">
-          <div className="container mx-auto px-5 lg:px-8 py-10 overflow-hidden">
-            <div className="flex gap-12 animate-marquee whitespace-nowrap items-center">
-              {[...logos, ...logos].map((l, i) => (
-                <div key={i} className="font-display text-2xl text-gray-400 font-bold">{l}</div>
+          <div className="container mx-auto px-5 lg:px-8 pt-8 pb-10 overflow-hidden">
+            <div className="text-center mb-8">
+              <h2 className="text-sm font-semibold tracking-widest uppercase text-gray-400">Powering global enterprises</h2>
+            </div>
+            <div className="flex gap-16 animate-marquee whitespace-nowrap items-center w-max">
+              {[...clientLogos, ...clientLogos].map((src, i) => (
+                <img 
+                  key={i} 
+                  src={src} 
+                  alt="Client Logo" 
+                  className="h-12 md:h-16 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                />
               ))}
             </div>
           </div>
