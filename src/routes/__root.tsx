@@ -13,6 +13,7 @@ import { ThemeProvider } from "../lib/theme";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Chatbot } from "../components/site/Chatbot";
+import { RegistrationDialog } from "../components/site/RegistrationDialog";
 
 function NotFoundComponent() {
   return (
@@ -128,6 +129,7 @@ function RootComponent() {
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
         <Chatbot />
+        <RegistrationDialog />
       </QueryClientProvider>
     </ThemeProvider>
   );

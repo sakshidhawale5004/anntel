@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { submitRegistration } from "@/lib/db";
 import { useNavigate } from "@tanstack/react-router";
 
-export function RegistrationDialog({ children }: { children: React.ReactNode }) {
+export function RegistrationDialog({ children }: { children?: React.ReactNode }) {
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const navigate = useNavigate();
@@ -51,9 +51,11 @@ export function RegistrationDialog({ children }: { children: React.ReactNode }) 
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        {children}
-      </DialogTrigger>
+      {children && (
+        <DialogTrigger asChild>
+          {children}
+        </DialogTrigger>
+      )}
       <DialogContent className="sm:max-w-[900px] p-0 overflow-hidden bg-white text-gray-900 [&>button]:text-gray-900 [&>button:hover]:text-black">
         <DialogTitle className="sr-only">Get Free 500 Credits On Registration</DialogTitle>
         <DialogDescription className="sr-only">Register to get free credits</DialogDescription>
