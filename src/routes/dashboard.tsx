@@ -90,7 +90,7 @@ function Dashboard() {
         }
         setIsLoggedIn(true);
       } else {
-        setLoginError("Invalid username or password. Use demo credentials (admin / admin123).");
+        setLoginError("Invalid username or password. Please try again.");
       }
       setIsLoggingIn(false);
     }, 600);
@@ -257,7 +257,7 @@ function Dashboard() {
                     />
                     <span>Remember session</span>
                   </label>
-                  <a href="#help" onClick={(e) => { e.preventDefault(); setUsername("admin"); setPassword("admin123"); }} className="text-red-400 hover:underline">
+                  <a href="#help" onClick={(e) => { e.preventDefault(); setLoginError("Please contact your system administrator to reset your credentials."); }} className="text-red-400 hover:underline">
                     Forgot password?
                   </a>
                 </div>
@@ -281,24 +281,7 @@ function Dashboard() {
                 </button>
               </form>
 
-              {/* Demo Helper Box */}
-              <div className="mt-6 pt-5 border-t border-white/10">
-                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 text-xs text-white/70 flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <div className="text-red-400 font-semibold flex items-center gap-1.5">
-                      <Sparkles className="h-3.5 w-3.5" /> Demo Access Credentials
-                    </div>
-                    <div>User: <strong className="text-white font-mono">admin</strong> | Pass: <strong className="text-white font-mono">admin123</strong></div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => { setUsername("admin"); setPassword("admin123"); }}
-                    className="px-3 py-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-300 font-semibold transition-colors shrink-0 cursor-pointer"
-                  >
-                    Auto-Fill
-                  </button>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
