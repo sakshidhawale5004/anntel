@@ -233,43 +233,37 @@ function About() {
       <SiteNav />
       
       <main className="flex-grow">
-        {/* 3D HERO SECTION - We Are Anntel with 3D Orbit Sphere */}
-        <section className="relative pt-32 pb-24 lg:pt-44 lg:pb-32 overflow-hidden bg-gradient-to-b from-[#020817] via-[#050e24] to-[#020817]">
-          {/* Ambient 3D background lighting */}
-          <div className="absolute top-0 inset-x-0 h-[600px] bg-gradient-to-b from-[#740001]/30 via-[#740001]/10 to-transparent pointer-events-none" />
-          <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-red-600/15 rounded-full blur-[120px] pointer-events-none animate-pulse" />
-          <div className="absolute top-1/3 right-10 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
-          
-          <div className="container mx-auto px-5 lg:px-8 relative z-10">
+        {/* 3D HERO SECTION — Solid navy background matching Home page */}
+        <section className="relative w-full overflow-hidden text-white min-h-[80vh] flex flex-col justify-center bg-[#02163b]">
+          <div className="container mx-auto px-5 lg:px-8 pt-20 lg:pt-28 pb-16 lg:pb-24 relative z-10">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               {/* Left Column: Story & CTA */}
               <div className="lg:col-span-7 text-left">
-                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-semibold text-red-400 mb-8 shadow-[0_0_20px_rgba(239,68,68,0.2)] backdrop-blur-md animate-fade-in-up">
-                  <span className="h-2.5 w-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_#ef4444]" />
-                  We Are Anntel
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#740001]/20 px-3 py-1 text-xs font-semibold mb-6 text-white animate-fade-in-up">
+                  <Sparkles className="h-3 w-3 text-[#740001]" /> We Are Anntel
                 </div>
-                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-medium mb-6 leading-tight text-white animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-tight mb-6 max-w-3xl text-white font-medium animate-fade-in-up" style={{ animationDelay: "100ms" }}>
                   Connecting the world <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-400 to-orange-400 drop-shadow-[0_5px_15px_rgba(239,68,68,0.4)]">
+                  <span style={{ background: "linear-gradient(135deg,#fff 0%,#93c5fd 60%,#740001 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                     through mobile technology.
                   </span>
                 </h1>
-                <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-10 leading-relaxed animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+                <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-9 leading-relaxed animate-fade-in-up" style={{ animationDelay: "200ms" }}>
                   Anntel isn’t just experts in messaging, we’re more than that. With our cloud communications platform, we are helping businesses with our SMS-based marketing campaigns, customer service alerts, and updates.
                 </p>
-                <div className="flex flex-wrap items-center gap-4 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
-                  <Button size="lg" asChild className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold px-8 h-14 rounded-full shadow-[0_0_35px_rgba(239,68,68,0.4)] transition-all transform hover:scale-105 text-lg">
+                <div className="flex flex-wrap gap-4 mb-12 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+                  <Button size="xl" asChild className="bg-white text-[#02163b] hover:bg-gray-100 font-semibold border-none">
                     <Link to="/contact">Get an Expert</Link>
                   </Button>
-                  <Button size="lg" variant="outline" asChild className="border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold px-8 h-14 rounded-full backdrop-blur-md transition-all text-lg">
+                  <Button variant="outline" size="xl" asChild className="border border-white bg-transparent text-white hover:bg-white/10 font-semibold">
                     <a href="#solutions">Explore Solutions</a>
                   </Button>
                 </div>
                 
-                {/* Quick trust checkmarks */}
-                <div className="mt-10 pt-8 border-t border-white/10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60 font-medium animate-fade-in-up" style={{ animationDelay: "400ms" }}>
-                  <div className="flex items-center gap-2"><span className="text-red-400 font-bold">✓</span> Enterprise OTT & MNO Solutions</div>
-                  <div className="flex items-center gap-2"><span className="text-red-400 font-bold">✓</span> Pan-India 100K+ Transactions</div>
+                <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/80 font-medium animate-fade-in-up" style={{ animationDelay: "400ms" }}>
+                  <div className="flex items-center gap-2">✓ Enterprise OTT & MNO solutions</div>
+                  <div className="flex items-center gap-2">✓ Pan-India 100K+ transactions</div>
+                  <div className="flex items-center gap-2">✓ 3+ Offices across India</div>
                 </div>
               </div>
 
