@@ -26,8 +26,6 @@ const channels = [
 const company = [
   { to: "/anntel-digital", label: "Anntel Digital" },
   { to: "/admin-reseller", label: "Admin & Reseller" },
-  { to: "/contact", label: "Contact" },
-  { to: "/dashboard", label: "Admin Dashboard" },
 ];
 
 function Dropdown({
