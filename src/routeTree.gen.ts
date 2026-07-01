@@ -27,6 +27,7 @@ import { Route as ChatbotsRouteImport } from './routes/chatbots'
 import { Route as AnntelMessagingRouteImport } from './routes/anntel-messaging'
 import { Route as AnntelDigitalRouteImport } from './routes/anntel-digital'
 import { Route as AdminResellerRouteImport } from './routes/admin-reseller'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WhatsappMarketingServiceRoute =
@@ -120,6 +121,11 @@ const AdminResellerRoute = AdminResellerRouteImport.update({
   path: '/admin-reseller',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -128,6 +134,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin-reseller': typeof AdminResellerRoute
   '/anntel-digital': typeof AnntelDigitalRoute
   '/anntel-messaging': typeof AnntelMessagingRoute
@@ -149,6 +156,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin-reseller': typeof AdminResellerRoute
   '/anntel-digital': typeof AnntelDigitalRoute
   '/anntel-messaging': typeof AnntelMessagingRoute
@@ -171,6 +179,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin-reseller': typeof AdminResellerRoute
   '/anntel-digital': typeof AnntelDigitalRoute
   '/anntel-messaging': typeof AnntelMessagingRoute
@@ -194,6 +203,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/admin-reseller'
     | '/anntel-digital'
     | '/anntel-messaging'
@@ -215,6 +225,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/admin-reseller'
     | '/anntel-digital'
     | '/anntel-messaging'
@@ -236,6 +247,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/admin-reseller'
     | '/anntel-digital'
     | '/anntel-messaging'
@@ -258,6 +270,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AdminResellerRoute: typeof AdminResellerRoute
   AnntelDigitalRoute: typeof AnntelDigitalRoute
   AnntelMessagingRoute: typeof AnntelMessagingRoute
@@ -406,6 +419,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminResellerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -418,6 +438,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AdminResellerRoute: AdminResellerRoute,
   AnntelDigitalRoute: AnntelDigitalRoute,
   AnntelMessagingRoute: AnntelMessagingRoute,
