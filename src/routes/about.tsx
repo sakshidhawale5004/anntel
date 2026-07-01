@@ -333,22 +333,25 @@ function About() {
           </div>
         </section>
 
-        {/* CLIENT LOGOS MARQUEE - 3D Elevated White Strip */}
-        <section className="py-20 border-y border-gray-200 bg-white text-gray-900 overflow-hidden relative z-20 shadow-2xl">
-          <div className="container mx-auto px-5 lg:px-8 mb-10 text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest mb-3 border border-red-100">
+        {/* CLIENT LOGOS MARQUEE - Navy Blue Strip with White Logo Cards */}
+        <section className="py-24 border-y border-white/10 bg-[#0a1730] overflow-hidden relative z-20 shadow-2xl">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#020817] via-transparent to-[#020817] opacity-60 pointer-events-none" />
+          
+          <div className="container mx-auto px-5 lg:px-8 mb-12 text-center relative z-10">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 text-red-400 text-xs font-bold uppercase tracking-widest mb-4 border border-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
               Verified Trust
             </div>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-2 tracking-tight">Customers Who Trust Us</h2>
-            <p className="text-sm text-gray-500 uppercase tracking-widest font-semibold">Powering global enterprises & fast-growing brands across India</p>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-3 tracking-tight">Customers Who Trust Us</h2>
+            <p className="text-sm text-white/60 uppercase tracking-widest font-semibold">Powering global enterprises & fast-growing brands across India</p>
           </div>
-          <div className="flex gap-14 animate-marquee whitespace-nowrap items-center w-max py-4">
+          
+          <div className="flex gap-8 animate-marquee whitespace-nowrap items-center w-max py-4 relative z-10">
             {[...clientLogos, ...clientLogos].map((src, i) => (
-              <div key={i} className="px-8 py-4 rounded-2xl bg-gray-50/90 hover:bg-white border border-gray-150 transition-all duration-300 flex items-center justify-center transform-gpu hover:-translate-y-1.5 hover:scale-105 shadow-sm hover:shadow-xl">
+              <div key={i} className="px-8 py-5 rounded-2xl bg-white hover:bg-white border border-white/40 transition-all duration-300 flex items-center justify-center transform-gpu hover:-translate-y-2 hover:scale-105 shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_40px_rgba(239,68,68,0.25)] min-w-[180px] h-24">
                 <img 
                   src={src} 
                   alt="Client Logo" 
-                  className="h-12 md:h-16 w-auto object-contain transition-all duration-300 filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.08)]" 
+                  className="h-12 md:h-14 w-auto object-contain transition-all duration-300 filter drop-shadow-sm" 
                 />
               </div>
             ))}
