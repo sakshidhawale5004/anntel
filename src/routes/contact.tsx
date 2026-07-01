@@ -92,9 +92,11 @@ function Contact() {
                 phone: fd.get('phone') as string,
                 interest: fd.get('interest') as string,
                 project: fd.get('project') as string,
+                appointmentDate: (fd.get('appointmentDate') as string) || "Not specified (ASAP)",
+                status: "New Appointment",
               };
               await submitContact({ data }).catch(console.error);
-              const text = `New Contact Request:%0AFirst Name: ${data.first}%0ALast Name: ${data.last}%0AEmail: ${data.email}%0ACompany: ${data.company}%0APhone: ${data.phone}%0AInterested in: ${data.interest}%0AProject: ${data.project}`;
+              const text = `New Contact Request:%0AFirst Name: ${data.first}%0ALast Name: ${data.last}%0AEmail: ${data.email}%0ACompany: ${data.company}%0APhone: ${data.phone}%0AInterested in: ${data.interest}%0AAppointment Date: ${data.appointmentDate}%0AProject: ${data.project}`;
               window.open(`https://wa.me/918828223388?text=${text}`, '_blank');
               setSent(true); 
             }} className="grid sm:grid-cols-2 gap-5">
@@ -107,6 +109,7 @@ function Contact() {
                 <label className="block text-sm font-medium mb-1.5 text-white/80">Interested in</label>
                 <select name="interest" className="w-full h-11 rounded-xl border border-white/15 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/50 text-white"
                   style={{ background: "rgba(255,255,255,0.05)" }}>
+                  <option style={{ background: "#0a1730" }}>Appointment / Consultation</option>
                   <option style={{ background: "#0a1730" }}>SMS / Messaging</option>
                   <option style={{ background: "#0a1730" }}>WhatsApp Business API</option>
                   <option style={{ background: "#0a1730" }}>Voice Services</option>
@@ -115,6 +118,20 @@ function Contact() {
                   <option style={{ background: "#0a1730" }}>Chatbots</option>
                   <option style={{ background: "#0a1730" }}>Reseller program</option>
                 </select>
+              </div>
+              <div className="sm:col-span-2">
+                <label className="block text-sm font-medium mb-1.5 text-white/80">
+                  <span className="flex items-center gap-1.5 text-red-400 font-semibold">
+                    📅 Preferred Appointment / Consultation Time (Optional)
+                  </span>
+                </label>
+                <input
+                  type="datetime-local"
+                  name="appointmentDate"
+                  className="w-full h-11 rounded-xl border border-white/15 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/50 text-white placeholder:text-white/30"
+                  style={{ background: "rgba(255,255,255,0.05)", colorScheme: "dark" }}
+                />
+                <p className="text-xs text-white/50 mt-1">Pick a date & time if you wish to schedule a consultation. Our team will see this directly on the Admin Dashboard.</p>
               </div>
               <div className="sm:col-span-2">
                 <label className="block text-sm font-medium mb-1.5 text-white/80">How can we help?</label>

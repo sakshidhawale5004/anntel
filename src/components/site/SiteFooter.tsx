@@ -37,6 +37,7 @@ const cols = [
       ["Anntel Digital", "/anntel-digital"],
       ["Admin & Reseller", "/admin-reseller"],
       ["Contact", "/contact"],
+      ["Admin Dashboard", "/dashboard"],
     ],
   },
 ] as const;

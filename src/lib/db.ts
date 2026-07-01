@@ -21,6 +21,8 @@ export type ContactSubmission = {
   phone: string;
   interest: string;
   project: string;
+  appointmentDate?: string;
+  status?: string;
   createdAt?: string;
 };
 
@@ -33,8 +35,51 @@ const CONTACT_DB_PATH = process.env.VERCEL || process.env.NODE_ENV === "producti
   ? path.join(os.tmpdir(), "contacts.json") 
   : path.resolve(process.cwd(), "contacts.json");
 
-let fallbackMemoryDb: Registration[] = [];
-let fallbackContactDb: ContactSubmission[] = [];
+let fallbackMemoryDb: Registration[] = [
+  {
+    fullName: "Rahul Verma",
+    email: "rahul@vermaconsulting.com",
+    phoneNumber: "+91 99887 76655",
+    state: "Maharashtra",
+    typeOfSms: "otp",
+    createdAt: new Date(Date.now() - 3600000 * 48).toISOString(),
+  },
+  {
+    fullName: "Ananya Desai",
+    email: "ananya.d@retailhub.in",
+    phoneNumber: "+91 98112 23344",
+    state: "Karnataka",
+    typeOfSms: "promotional",
+    createdAt: new Date(Date.now() - 3600000 * 12).toISOString(),
+  }
+];
+
+let fallbackContactDb: ContactSubmission[] = [
+  {
+    first: "Vikram",
+    last: "Sharma",
+    email: "vikram@techsolutions.in",
+    company: "TechSolutions India Pvt Ltd",
+    phone: "+91 98765 43210",
+    interest: "WhatsApp Business API",
+    project: "Looking to automate order tracking and customer notifications for our e-commerce platform with 50k monthly active users.",
+    appointmentDate: "2026-07-03T14:30",
+    status: "Scheduled",
+    createdAt: new Date(Date.now() - 3600000 * 24).toISOString(),
+  },
+  {
+    first: "Priya",
+    last: "Nair",
+    email: "priya.nair@finvest.com",
+    company: "Finvest Capital",
+    phone: "+91 91234 56789",
+    interest: "OTP Solutions",
+    project: "Need enterprise-grade OTP verification with sub-second delivery for our mobile banking application.",
+    appointmentDate: "2026-07-02T11:00",
+    status: "New Appointment",
+    createdAt: new Date(Date.now() - 3600000 * 5).toISOString(),
+  }
+];
 
 // REGISTRATIONS
 export const submitRegistration = createServerFn({ method: "POST" })
@@ -124,5 +169,86 @@ export const getContactsList = createServerFn({ method: "GET" })
       return JSON.parse(fileContent);
     } catch (err) {
       return fallbackContactDb;
+    }
+  });
+
+export const updateContactStatus = createServerFn({ method: "POST" })
+  .validator((data: { index: number; status: string }) => data)
+  .handler(async ({ data }) => {
+    try {
+      let currentData: ContactSubmission[] = [];
+      try {
+        const fileContent = await fs.readFile(CONTACT_DB_PATH, "utf-8");
+        currentData = JSON.parse(fileContent);
+      } catch (err) {
+        currentData = fallbackContactDb;
+      }
+      if (currentData[data.index]) {
+        currentData[data.index].status = data.status;
+        fallbackContactDb = currentData;
+        try {
+          await fs.writeFile(CONTACT_DB_PATH, JSON.stringify(currentData, null, 2));
+        } catch (writeErr) {
+          console.warn("Could not write to file system, using memory fallback.");
+        }
+      }
+      return { success: true };
+    } catch (error) {
+      console.error("Failed to update contact status:", error);
+      throw error;
+    }
+  });
+
+export const deleteContact = createServerFn({ method: "POST" })
+  .validator((data: { index: number }) => data)
+  .handler(async ({ data }) => {
+    try {
+      let currentData: ContactSubmission[] = [];
+      try {
+        const fileContent = await fs.readFile(CONTACT_DB_PATH, "utf-8");
+        currentData = JSON.parse(fileContent);
+      } catch (err) {
+        currentData = fallbackContactDb;
+      }
+      if (currentData[data.index]) {
+        currentData.splice(data.index, 1);
+        fallbackContactDb = currentData;
+        try {
+          await fs.writeFile(CONTACT_DB_PATH, JSON.stringify(currentData, null, 2));
+        } catch (writeErr) {
+          console.warn("Could not write to file system, using memory fallback.");
+        }
+      }
+      return { success: true };
+    } catch (error) {
+      console.error("Failed to delete contact:", error);
+      throw error;
+    }
+  });
+
+export const deleteRegistration = createServerFn({ method: "POST" })
+  .validator((data: { index: number }) => data)
+  .handler(async ({ data }) => {
+    try {
+      let currentData: Registration[] = [];
+      try {
+        const fileContent = await fs.readFile(DB_PATH, "utf-8");
+        currentData = JSON.parse(fileContent);
+      } catch (err) {
+        currentData = fallbackMemoryDb;
+      }
+      if (currentData[data.index]) {
+        currentData.splice(data.index, 1);
+        fallbackMemoryDb = currentData;
+        try {
+          await fs.writeFile(DB_PATH, JSON.stringify(currentData, null, 2));
+        } catch (writeErr) {
+          console.warn("Could not write to file system, using memory fallback.");
+        }
+      }
+      return { success: true };
+    } catch (error) {
+      console.error("Failed to delete registration:", error);
+      throw error;
     }
   });

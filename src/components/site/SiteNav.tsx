@@ -27,6 +27,7 @@ const company = [
   { to: "/anntel-digital", label: "Anntel Digital" },
   { to: "/admin-reseller", label: "Admin & Reseller" },
   { to: "/contact", label: "Contact" },
+  { to: "/dashboard", label: "Admin Dashboard" },
 ];
 
 function Dropdown({
@@ -112,7 +113,7 @@ export function SiteNav() {
             asChild
             className={isDark ? "text-white hover:text-white hover:bg-white/10" : "text-gray-700 hover:text-gray-900 cursor-pointer"}
           >
-            <a href="https://anntelair.com/">Login</a>
+            <Link to="/dashboard">Login</Link>
           </Button>
           <Button asChild>
             <Link to="/contact">Start for free</Link>
