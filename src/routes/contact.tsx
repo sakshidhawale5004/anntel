@@ -145,7 +145,8 @@ function Contact() {
 
         {/* Sidebar */}
         <div className="space-y-4">
-          <InfoCard icon={Mail} title="Email us" text="contact@anntel.in" href="mailto:contact@anntel.in" />
+          <InfoCard icon={Mail} title="General Inquiries" text="contact@anntel.in" href="mailto:contact@anntel.in" />
+          <InfoCard icon={Mail} title="Customer Support" text="support@anntel.in" href="mailto:support@anntel.in" />
           <InfoCard icon={Phone} title="Sales Inquiry" text="+91 8828 22 3388" href="tel:+918828223388" />
           <InfoCard icon={MapPin} title="Offices" text="Mumbai, Raipur, Haryana" />
 

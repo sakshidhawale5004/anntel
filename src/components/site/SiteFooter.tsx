@@ -64,6 +64,9 @@ export function SiteFooter() {
               <a href="mailto:contact@anntel.in" className="flex items-center gap-2 text-foreground/90 hover:text-primary transition-colors">
                 <Mail className="h-4 w-4 text-primary" /> contact@anntel.in
               </a>
+              <a href="mailto:support@anntel.in" className="flex items-center gap-2 text-foreground/90 hover:text-primary transition-colors">
+                <Mail className="h-4 w-4 text-primary" /> support@anntel.in
+              </a>
             </div>
             <div className="mt-5 flex items-center gap-2">
               {socials.map((s) => (
