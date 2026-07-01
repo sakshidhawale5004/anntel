@@ -168,7 +168,7 @@ function Hero3DOrb() {
       {/* 6 Orbiting Channel Chips - Styled exactly like the red screenshot */}
       {/* 1. Top: SMS */}
       <div className="absolute -top-2 left-1/2 -translate-x-1/2 animate-float z-20" style={{ animationDelay: "0s" }}>
-        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-bold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
+        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-semibold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
           <span className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center text-red-600"><MessageSquare className="w-3.5 h-3.5" /></span>
           SMS
         </div>
@@ -176,7 +176,7 @@ function Hero3DOrb() {
 
       {/* 2. Top Right: Chat */}
       <div className="absolute top-12 -right-2 sm:right-2 animate-float z-20" style={{ animationDelay: "0.8s" }}>
-        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-bold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
+        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-semibold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
           <span className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center text-red-600"><MessagesSquare className="w-3.5 h-3.5" /></span>
           Chat
         </div>
@@ -184,7 +184,7 @@ function Hero3DOrb() {
 
       {/* 3. Bottom Right: Voice */}
       <div className="absolute bottom-12 -right-2 sm:right-2 animate-float z-20" style={{ animationDelay: "1.6s" }}>
-        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-bold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
+        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-semibold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
           <span className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center text-red-600"><Phone className="w-3.5 h-3.5" /></span>
           Voice
         </div>
@@ -192,7 +192,7 @@ function Hero3DOrb() {
 
       {/* 4. Bottom: Email */}
       <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 animate-float z-20" style={{ animationDelay: "2.4s" }}>
-        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-bold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
+        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-semibold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
           <span className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center text-red-600"><Mail className="w-3.5 h-3.5" /></span>
           Email
         </div>
@@ -200,7 +200,7 @@ function Hero3DOrb() {
 
       {/* 5. Bottom Left: RCS */}
       <div className="absolute bottom-12 -left-2 sm:left-2 animate-float z-20" style={{ animationDelay: "3.2s" }}>
-        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-bold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
+        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-semibold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
           <span className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center text-red-600"><Globe className="w-3.5 h-3.5" /></span>
           RCS
         </div>
@@ -208,7 +208,7 @@ function Hero3DOrb() {
 
       {/* 6. Top Left: OTP */}
       <div className="absolute top-12 -left-2 sm:left-2 animate-float z-20" style={{ animationDelay: "4.0s" }}>
-        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-bold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
+        <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 text-xs font-semibold shadow-[0_10px_25px_rgba(239,68,68,0.5)] border border-red-200 transform hover:scale-110 transition-transform">
           <span className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center text-red-600"><Shield className="w-3.5 h-3.5" /></span>
           OTP
         </div>
@@ -248,17 +248,17 @@ function About() {
                   <span className="h-2.5 w-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_#ef4444]" />
                   We Are Anntel
                 </div>
-                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight text-white animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-medium mb-6 leading-tight text-white animate-fade-in-up" style={{ animationDelay: "100ms" }}>
                   Connecting the world <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-400 to-orange-400 drop-shadow-[0_5px_15px_rgba(239,68,68,0.4)]">
                     through mobile technology.
                   </span>
                 </h1>
-                <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-10 font-light leading-relaxed animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+                <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-10 leading-relaxed animate-fade-in-up" style={{ animationDelay: "200ms" }}>
                   Anntel isn’t just experts in messaging, we’re more than that. With our cloud communications platform, we are helping businesses with our SMS-based marketing campaigns, customer service alerts, and updates.
                 </p>
                 <div className="flex flex-wrap items-center gap-4 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
-                  <Button size="lg" asChild className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold px-8 h-14 rounded-full shadow-[0_0_35px_rgba(239,68,68,0.4)] transition-all transform hover:scale-105 text-lg">
+                  <Button size="lg" asChild className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold px-8 h-14 rounded-full shadow-[0_0_35px_rgba(239,68,68,0.4)] transition-all transform hover:scale-105 text-lg">
                     <Link to="/contact">Get an Expert</Link>
                   </Button>
                   <Button size="lg" variant="outline" asChild className="border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold px-8 h-14 rounded-full backdrop-blur-md transition-all text-lg">
@@ -286,9 +286,9 @@ function About() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 md:p-8 rounded-3xl bg-white/[0.07] backdrop-blur-2xl border border-white/15 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
             {stats.map((stat, i) => (
               <div key={i} className="text-center p-6 rounded-2xl bg-white/[0.03] hover:bg-white/[0.1] transition-all duration-500 transform-gpu hover:-translate-y-2 hover:scale-[1.03] border border-white/5 hover:border-red-500/50 group shadow-lg hover:shadow-[0_15px_30px_rgba(239,68,68,0.2)]">
-                <div className="font-display text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-red-200 mb-2 group-hover:scale-105 transition-transform">{stat.value}</div>
-                <div className="text-sm text-red-400 font-bold tracking-wider uppercase mb-1">{stat.label}</div>
-                <div className="text-xs text-white/50 font-light">{stat.desc}</div>
+                <div className="font-display text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-red-200 mb-2 group-hover:scale-105 transition-transform">{stat.value}</div>
+                <div className="text-sm text-red-400 font-semibold tracking-wider uppercase mb-1">{stat.label}</div>
+                <div className="text-xs text-white/50">{stat.desc}</div>
               </div>
             ))}
           </div>
@@ -298,13 +298,13 @@ function About() {
         <section className="py-20 relative overflow-hidden">
           <div className="container mx-auto px-5 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-bold text-red-400 uppercase tracking-widest mb-4 shadow-[0_0_15px_rgba(239,68,68,0.15)]">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-semibold text-red-400 uppercase tracking-widest mb-4 shadow-[0_0_15px_rgba(239,68,68,0.15)]">
                 Global Reach & Portfolio
               </div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">
+              <h2 className="font-display text-4xl md:text-5xl mb-6 text-white">
                 Powering Diverse Communications
               </h2>
-              <p className="text-lg text-white/70 leading-relaxed font-light">
+              <p className="text-lg text-white/70 leading-relaxed">
                 We cater to enterprises, over-the-top (OTT) players, and mobile network operators (MNO) and our portfolio comprises solutions in messaging, voice, email, SMS filtering, analytics, and monetization.
               </p>
             </div>
@@ -321,8 +321,8 @@ function About() {
                         {item.tag}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-red-300 transition-colors">{item.title}</h3>
-                    <p className="text-white/70 leading-relaxed font-light text-base">{item.desc}</p>
+                    <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-red-300 transition-colors">{item.title}</h3>
+                    <p className="text-white/70 leading-relaxed text-base">{item.desc}</p>
                   </div>
                   <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-2 text-sm text-red-400 font-semibold group-hover:text-red-300 transition-colors">
                     <CheckCircle2 className="w-4 h-4 text-red-500" /> Tailored Architecture
@@ -338,10 +338,10 @@ function About() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#020817] via-transparent to-[#020817] opacity-60 pointer-events-none" />
           
           <div className="container mx-auto px-5 lg:px-8 mb-12 text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 text-red-400 text-xs font-bold uppercase tracking-widest mb-4 border border-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 text-red-400 text-xs font-semibold uppercase tracking-widest mb-4 border border-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
               Verified Trust
             </div>
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-3 tracking-tight">Customers Who Trust Us</h2>
+            <h2 className="text-3xl md:text-5xl font-display text-white mb-3">Customers Who Trust Us</h2>
             <p className="text-sm text-white/60 uppercase tracking-widest font-semibold">Powering global enterprises & fast-growing brands across India</p>
           </div>
           
@@ -365,16 +365,16 @@ function About() {
           
           <div className="container mx-auto px-5 lg:px-8 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-20">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-bold text-red-400 uppercase tracking-widest mb-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-semibold text-red-400 uppercase tracking-widest mb-4">
                 Guiding Principles
               </div>
-              <h2 className="font-display text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+              <h2 className="font-display text-4xl md:text-6xl mb-6">
                 Our Vision
               </h2>
-              <p className="text-xl md:text-2xl font-light text-white/90 leading-relaxed mb-4">
+              <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-4">
                 To connect the world through mobile technology.
               </p>
-              <p className="text-base text-white/60 max-w-2xl mx-auto font-light">
+              <p className="text-base text-white/60 max-w-2xl mx-auto">
                 We’re guided by our commitments to our colleagues, our clients, and our technological stack:
               </p>
             </div>
@@ -394,9 +394,9 @@ function About() {
                         {pillar.badge}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-bold mb-2 text-white">{pillar.title}</h3>
+                    <h3 className="text-2xl font-semibold mb-2 text-white">{pillar.title}</h3>
                     <div className="text-sm font-semibold text-red-400 mb-6">{pillar.subtitle}</div>
-                    <p className="text-white/75 leading-relaxed font-light text-base">{pillar.desc}</p>
+                    <p className="text-white/75 leading-relaxed text-base">{pillar.desc}</p>
                   </div>
                   <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-2 text-sm text-white/50 group-hover:text-white/80 transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
@@ -412,13 +412,13 @@ function About() {
         <section id="solutions" className="py-24 relative overflow-hidden">
           <div className="container mx-auto px-5 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-bold text-red-400 uppercase tracking-widest mb-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-semibold text-red-400 uppercase tracking-widest mb-4">
                 Adaptive Portfolio
               </div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+              <h2 className="font-display text-4xl md:text-5xl mb-6">
                 Our Solutions Can Adapt to Your Business
               </h2>
-              <p className="text-lg text-white/65 font-light">
+              <p className="text-lg text-white/65">
                 Whether you require programmable APIs, integrated voice solutions, or a holistic digital marketing strategy, our solutions scale seamlessly with your growth.
               </p>
             </div>
@@ -438,12 +438,12 @@ function About() {
                         {sol.badge}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-red-300 transition-colors">{sol.title}</h3>
-                    <p className="text-white/70 leading-relaxed text-sm font-light mb-8">{sol.desc}</p>
+                    <h3 className="text-2xl font-semibold mb-3 text-white group-hover:text-red-300 transition-colors">{sol.title}</h3>
+                    <p className="text-white/70 leading-relaxed text-sm mb-8">{sol.desc}</p>
                   </div>
                   <Link 
                     to={sol.to} 
-                    className="inline-flex items-center gap-2 text-sm font-bold text-red-400 hover:text-red-300 group-hover:translate-x-1.5 transition-all"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-red-400 hover:text-red-300 group-hover:translate-x-1.5 transition-all"
                   >
                     Learn More <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -457,8 +457,8 @@ function About() {
         <section className="py-24 bg-gradient-to-b from-[#020817] to-[#0a1730] border-t border-white/10">
           <div className="container mx-auto px-5 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 tracking-tight">Why Choose Us?</h2>
-              <p className="text-lg text-white/65 font-light">We combine enterprise-grade reliability with developer-first simplicity.</p>
+              <h2 className="font-display text-4xl md:text-5xl mb-6">Why Choose Us?</h2>
+              <p className="text-lg text-white/65">We combine enterprise-grade reliability with developer-first simplicity.</p>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
@@ -472,8 +472,8 @@ function About() {
                   <div className="w-14 h-14 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 text-red-500 shadow-inner">
                     <value.icon className="w-7 h-7" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
-                  <p className="text-white/65 leading-relaxed font-light">{value.desc}</p>
+                  <h3 className="text-2xl font-semibold text-white mb-4">{value.title}</h3>
+                  <p className="text-white/65 leading-relaxed">{value.desc}</p>
                 </div>
               ))}
             </div>
@@ -485,9 +485,9 @@ function About() {
           <div className="absolute inset-0 bg-[#740001] mix-blend-multiply" />
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2000')] bg-cover bg-center opacity-30" />
           <div className="container mx-auto px-5 lg:px-8 relative z-10 text-center">
-            <h2 className="font-display text-5xl md:text-6xl font-bold mb-8 tracking-tight">Ready to transform your communication?</h2>
-            <p className="text-xl text-white/85 max-w-2xl mx-auto mb-10 font-light">Join thousands of businesses that trust Anntel to handle their critical messaging infrastructure.</p>
-            <Button size="lg" asChild className="bg-white text-[#740001] hover:bg-white/90 text-lg h-14 px-8 rounded-full font-bold shadow-[0_10px_30px_rgba(0,0,0,0.4)] transform hover:scale-105 transition-all">
+            <h2 className="font-display text-5xl md:text-6xl mb-8">Ready to transform your communication?</h2>
+            <p className="text-xl text-white/85 max-w-2xl mx-auto mb-10">Join thousands of businesses that trust Anntel to handle their critical messaging infrastructure.</p>
+            <Button size="lg" asChild className="bg-white text-[#740001] hover:bg-white/90 text-lg h-14 px-8 rounded-full font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.4)] transform hover:scale-105 transition-all">
               <Link to="/contact">Get an Expert</Link>
             </Button>
           </div>
